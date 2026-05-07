@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>㈜다옴디앤씨 | DAOM D&C Co.Ltd.</title>
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+      color: #1a1a2e;
+      background: #fff;
+      line-height: 1.7;
+    }
+
+    /* ─── Variables ─── */
+    :root {
+      --navy: #0f2455;
+      --blue: #1a5fc0;
+      --accent: #2e84e5;
+      --gold: #c9a84c;
+      --light: #f4f7fc;
+      --border: #dde4f0;
+      --text: #1a1a2e;
+      --muted: #6b7a99;
+    }
+
+    /* ─── Navigation ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(15, 36, 85, 0.97);
+      backdrop-filter: blur(8px);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      padding: 0 5%;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+      transition: background 0.3s;
+    }
+    .nav-inner {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-size: 0.88rem;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .nav-toggle span { width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: 0.3s; }
+
+    /* ─── Hero ─── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0a1a3e 0%, #0f2455 50%, #1a3a6e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 20% 80%, rgba(46,132,229,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 80% 20%, rgba(201,168,76,0.12) 0%, transparent 60%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 860px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201,168,76,0.18);
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+    .hero-title {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+    }
+    .hero-title em { color: var(--gold); font-style: normal; }
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.75rem;
+    }
+    .hero-tagline {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.03em;
+    }
+    .hero-services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+    }
+    .hero-tag {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.85);
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+    }
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 14px 32px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s;
+      display: inline-block;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: #1a1a2e;
+    }
+    .btn-primary:hover { background: #e0b95a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.4); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.4);
+      color: #fff;
+    }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 28px; left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+    .scroll-arrow {
+      width: 20px; height: 20px;
+      border-right: 2px solid rgba(255,255,255,0.4);
+      border-bottom: 2px solid rgba(255,255,255,0.4);
+      transform: rotate(45deg);
+      animation: bounce 1.6s infinite;
+    }
+    @keyframes bounce { 0%,100%{transform:rotate(45deg) translateY(0)} 50%{transform:rotate(45deg) translateY(5px)} }
+
+    /* ─── Sections ─── */
+    section { padding: 90px 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+      line-height: 1.25;
+    }
+    .section-divider {
+      width: 48px; height: 4px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.75;
+    }
+
+    /* ─── CEO Message ─── */
+    #ceo { background: var(--light); }
+    .ceo-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+    .ceo-card {
+      background: var(--navy);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      color: #fff;
+    }
+    .ceo-avatar {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      font-size: 2.2rem;
+    }
+    .ceo-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .ceo-title { font-size: 0.85rem; color: var(--gold); letter-spacing: 0.05em; }
+    .ceo-company { font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem; }
+    .ceo-message blockquote {
+      font-size: 1.05rem;
+      color: #2c3e50;
+      line-height: 1.9;
+      padding-left: 1.5rem;
+      border-left: 3px solid var(--gold);
+      margin-bottom: 2rem;
+    }
+    .ceo-message p {
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    /* ─── Company Overview ─── */
+    #overview { background: #fff; }
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .overview-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1.4rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .overview-item:hover { box-shadow: 0 8px 28px rgba(15,36,85,0.1); transform: translateY(-2px); }
+    .overview-icon {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      background: var(--light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+    .overview-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.25rem;
+    }
+    .overview-value {
+      font-size: 0.97rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.55;
+    }
+
+    /* ─── Business Areas ─── */
+    #business { background: var(--light); }
+    .business-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 10px 22px;
+      border: 2px solid var(--border);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #fff;
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .service-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+    }
+    .service-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 2px solid var(--light);
+    }
+    .service-card-icon {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+    .service-card-title { font-size: 1.35rem; font-weight: 800; color: var(--navy); }
+    .service-card-sub { font-size: 0.88rem; color: var(--muted); margin-top: 0.15rem; }
+    .service-groups {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-group h4 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .service-group h4::before {
+      content: '';
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .service-group ul { list-style: none; }
+    .service-group li {
+      font-size: 0.87rem;
+      color: #444;
+      padding: 4px 0 4px 16px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .service-group li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* ─── Org Chart ─── */
+    #org { background: #fff; }
+    .org-chart {
+      margin-top: 3rem;
+      text-align: center;
+    }
+    .org-ceo {
+      display: inline-block;
+      background: var(--navy);
+      color: #fff;
+      padding: 14px 40px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0;
+      position: relative;
+    }
+    .org-ceo::after {
+      content: '';
+      position: absolute;
+      bottom: -30px; left: 50%;
+      transform: translateX(-50%);
+      width: 2px; height: 30px;
+      background: var(--border);
+    }
+    .org-line {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      position: relative;
+    }
+    .org-line::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 70%; height: 2px;
+      background: var(--border);
+    }
+    .org-departments {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 0;
+    }
+    .org-dept-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .org-dept-wrap::before {
+      content: '';
+      width: 2px; height: 30px;
+      background: var(--border);
+    }
+    .org-dept {
+      background: var(--light);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.4rem;
+      min-width: 160px;
+      text-align: center;
+    }
+    .org-dept.highlight { border-color: var(--blue); background: rgba(26,95,192,0.05); }
+    .org-dept-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .org-dept-tasks {
+      list-style: none;
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .org-advisors {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .org-advisor {
+      background: linear-gradient(135deg, var(--gold), #e0b95a);
+      color: #1a1a2e;
+      padding: 8px 24px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* ─── Partnership ─── */
+    #partnership { background: var(--navy); }
+    #partnership .section-label { color: var(--gold); }
+    #partnership .section-title { color: #fff; }
+    .partnership-lead {
+      color: rgba(255,255,255,0.65);
+      font-size: 1rem;
+      max-width: 600px;
+      line-height: 1.75;
+      margin-bottom: 3rem;
+    }
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .partner-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .partner-card:hover { background: rgba(255,255,255,0.12); transform: translateY(-3px); }
+    .partner-icon {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+    }
+    .partner-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* ─── Track Record ─── */
+    #record { background: var(--light); }
+    .record-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+    .stat-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 1.8rem 1.5rem;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+    .stat-num {
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .stat-num span { color: var(--gold); font-size: 1.6rem; }
+    .stat-label { font-size: 0.88rem; color: var(--muted); margin-top: 0.4rem; }
+    .record-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .rec-tab {
+      padding: 8px 20px;
+      border-radius: 6px;
+      background: #fff;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--muted);
+      transition: all 0.2s;
+    }
+    .rec-tab.active, .rec-tab:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .rec-panel { display: none; }
+    .rec-panel.active { display: block; }
+    .record-table-wrap {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .record-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .record-table th {
+      background: var(--navy);
+      color: #fff;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.83rem;
+      letter-spacing: 0.03em;
+    }
+    .record-table td {
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--border);
+      color: #333;
+      vertical-align: top;
+    }
+    .record-table tr:last-child td { border-bottom: none; }
+    .record-table tr:nth-child(even) td { background: #fafbfe; }
+    .year-badge {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .award-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 0.8rem;
+    }
+    .award-item {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      transition: box-shadow 0.2s;
+    }
+    .award-item:hover { box-shadow: 0 4px 16px rgba(15,36,85,0.1); }
+    .award-bullet {
+      flex-shrink: 0;
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      margin-top: 6px;
+    }
+    .award-text {
+      font-size: 0.86rem;
+      color: #333;
+      line-height: 1.55;
+    }
+
+    /* ─── Contact / Footer ─── */
+    #contact { background: var(--navy); padding-bottom: 0; }
+    #contact .section-title { color: #fff; }
+    #contact .section-label { color: var(--gold); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+    .contact-info-list { list-style: none; }
+    .contact-info-list li {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+    }
+    .contact-info-list li:last-child { border-bottom: none; }
+    .ci-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .ci-label {
+      font-size: 0.78rem;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .ci-value { font-size: 0.95rem; }
+    .contact-map-placeholder {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 3rem 2rem;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    .contact-map-placeholder .map-icon { font-size: 2.5rem; }
+    footer {
+      background: rgba(0,0,0,0.35);
+      padding: 1.5rem 5%;
+      margin-top: 4rem;
+      text-align: center;
+      color: rgba(255,255,255,0.35);
+      font-size: 0.8rem;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 900px) {
+      .ceo-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .overview-grid { grid-template-columns: 1fr; }
+      .record-intro { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 640px) {
+      section { padding: 60px 5%; }
+      .record-intro { grid-template-columns: 1fr; }
+      .org-line::before { width: 90%; }
+      .nav-links { display: none; flex-direction: column; position: fixed; top: 64px; left: 0; right: 0; background: var(--navy); padding: 1.5rem 5%; gap: 1rem; border-top: 1px solid rgba(255,255,255,0.1); }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">㈜다옴<span>디앤씨</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#ceo">인사말</a></li>
+      <li><a href="#overview">회사소개</a></li>
+      <li><a href="#business">사업분야</a></li>
+      <li><a href="#record">주요실적</a></li>
+      <li><a href="#contact">연락처</a></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle" aria-label="메뉴 열기">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-badge">DAOM D&amp;C Co., Ltd.</div>
+    <h1 class="hero-title">신뢰와 성실로 함께하는<br><em>㈜다옴디앤씨</em></h1>
+    <p class="hero-subtitle">재개발·재건축·지역주택사업 전문기업</p>
+    <p class="hero-tagline">오랜 경험과 실무를 기반으로 여러분의 사업 성공을 이끕니다</p>
+    <div class="hero-services">
+      <span class="hero-tag">수주 컨설팅</span>
+      <span class="hero-tag">조합총회 업무대행</span>
+      <span class="hero-tag">이주관리 및 촉진</span>
+      <span class="hero-tag">세입자 조사</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#business" class="btn btn-primary">사업 분야 보기</a>
+      <a href="#contact" class="btn btn-outline">문의하기</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    SCROLL
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- CEO Message -->
+<section id="ceo">
+  <div class="section-inner">
+    <div class="section-label">CEO Message</div>
+    <h2 class="section-title">대표이사 인사말</h2>
+    <div class="section-divider"></div>
+    <div class="ceo-grid">
+      <div>
+        <div class="ceo-card">
+          <div class="ceo-avatar">👤</div>
+          <div class="ceo-name">권 형 명</div>
+          <div class="ceo-title">대표이사 / CEO</div>
+          <div class="ceo-company">㈜다옴디앤씨</div>
+        </div>
+      </div>
+      <div class="ceo-message">
+        <blockquote>
+          안녕하십니까?<br>
+          그 동안 재개발, 재건축, 지역주택사업 시장에서 오랜 경험과 실무를 기반으로 이번에 귀 조합에 직접 찾아 뵙게 되어 영광으로 생각합니다.
+        </blockquote>
+        <p>
+          재개발, 재건축, 지역주택사업 업무는 오직 <strong>신뢰와 성실</strong>이 가장 중요하다고 믿고 있으며, 이러한 자세로 저희에게 주어진 임무를 최선을 다하여 수행코자 합니다.
+        </p>
+        <p>
+          당사는 분야별 실력을 보유한 전문가들로 구성되어 수주컨설팅, 조합총회업무대행, 세입자조사, 이주관리 및 촉진, 기타 관련업무를 신속히 추진하여 여러분의 사업에 도움을 드리고자 합니다.
+        </p>
+        <p>귀 조합의 성공과 무궁한 발전을 기원합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Company Overview -->
+<section id="overview">
+  <div class="section-inner">
+    <div class="section-label">Company Overview</div>
+    <h2 class="section-title">회사 개요</h2>
+    <div class="section-divider"></div>
+    <div class="overview-grid">
+      <div class="overview-item">
+        <div class="overview-icon">🏢</div>
+        <div>
+          <div class="overview-label">상호</div>
+          <div class="overview-value">㈜다옴디앤씨<br><small style="font-weight:400;font-size:0.82rem;color:var(--muted)">DAOM D&amp;C Co.Ltd.</small></div>
+        </div>
+      </div>
+      <div class="overview-item">
+        <div class="overview-icon">👤</div>
+        <div>
+          <div class="overview-label">대표이사</div>
+          <div class="overview-value">권 형 명</div>
+        </div>
+      </div>
+      <div class="overview-item">
+        <div class="overview-icon">📍</div>
+        <div>
+          <div class="overview-label">소재지</div>
+          <div class="overview-value">인천시 남동구 미래로 6, 1909호</div>
+        </div>
+      </div>
+      <div class="overview-item">
+        <div class="overview-icon">📋</div>
+        <div>
+          <div class="overview-label">사업자등록번호</div>
+          <div class="overview-value">337 – 81 – 02215</div>
+        </div>
+      </div>
+      <div class="overview-item">
+        <div class="overview-icon">📅</div>
+        <div>
+          <div class="overview-label">설립연도</div>
+          <div class="overview-value">2021년 04월</div>
+        </div>
+      </div>
+      <div class="overview-item">
+        <div class="overview-icon">💼</div>
+        <div>
+          <div class="overview-label">업태 / 종목</div>
+          <div class="overview-value">서비스 / 부동산관련컨설팅, 홍보대행</div>
+        </div>
+      </div>
+      <div class="overview-item" style="grid-column: 1 / -1;">
+        <div class="overview-icon">📌</div>
+        <div>
+          <div class="overview-label">사업분야</div>
+          <div class="overview-value" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.3rem;">
+            <span style="background:var(--light);padding:4px 12px;border-radius:20px;font-size:0.83rem;color:var(--navy);">부동산컨설팅업</span>
+            <span style="background:var(--light);padding:4px 12px;border-radius:20px;font-size:0.83rem;color:var(--navy);">분양대행업</span>
+            <span style="background:var(--light);padding:4px 12px;border-radius:20px;font-size:0.83rem;color:var(--navy);">인력공급업</span>
+            <span style="background:var(--light);padding:4px 12px;border-radius:20px;font-size:0.83rem;color:var(--navy);">수주기획 및 대행업</span>
+            <span style="background:var(--light);padding:4px 12px;border-radius:20px;font-size:0.83rem;color:var(--navy);">기업홍보대행업</span>
+            <span style="background:var(--light);padding:4px 12px;border-radius:20px;font-size:0.83rem;color:var(--navy);">이주관리업</span>
+            <span style="background:var(--light);padding:4px 12px;border-radius:20px;font-size:0.83rem;color:var(--navy);">총회대행업</span>
+            <span style="background:var(--light);padding:4px 12px;border-radius:20px;font-size:0.83rem;color:var(--navy);">광고대행업</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Business Areas -->
+<section id="business">
+  <div class="section-inner">
+    <div class="section-label">Business Areas</div>
+    <h2 class="section-title">사업 분야</h2>
+    <div class="section-divider"></div>
+    <p class="section-lead">㈜다옴디앤씨는 신뢰와 성실을 기반으로 품격 높은 서비스를 제공합니다.</p>
+
+    <div class="business-tabs">
+      <button class="tab-btn active" data-tab="tab1">🎯 수주 컨설팅</button>
+      <button class="tab-btn" data-tab="tab2">📋 총회 대행업무</button>
+      <button class="tab-btn" data-tab="tab3">🚚 이주관리 &amp; 촉진</button>
+      <button class="tab-btn" data-tab="tab4">🔍 세입자 조사</button>
+    </div>
+
+    <!-- Tab 1: 수주 컨설팅 -->
+    <div class="tab-panel active" id="tab1">
+      <div class="service-card">
+        <div class="service-card-header">
+          <div class="service-card-icon">🎯</div>
+          <div>
+            <div class="service-card-title">수주 컨설팅</div>
+            <div class="service-card-sub">전략적 수주 기획부터 조직 구축, 홍보물 제작까지 One-Stop 지원</div>
+          </div>
+        </div>
+        <div class="service-groups">
+          <div class="service-group">
+            <h4>1. 사전 수주전략 기획</h4>
+            <ul>
+              <li>사전조사를 통한 조합원 NEEDS 분석</li>
+              <li>경쟁사 각종 자료분석 및 동향파악</li>
+              <li>경쟁사 협조체제 유도</li>
+              <li>사업성 분석과 수주 가능성 검토 제안</li>
+            </ul>
+          </div>
+          <div class="service-group">
+            <h4>2. 사전 조직구축</h4>
+            <ul>
+              <li>지역별 사업소 운영을 통한 사업지별 조직구축</li>
+              <li>유력인사, 관련단체, 통반장, 부동산 등 조직구축</li>
+              <li>우호세력 조합원의 조직화 구축 작업</li>
+            </ul>
+          </div>
+          <div class="service-group">
+            <h4>3. 홍보물 기획 / 제작</h4>
+            <ul>
+              <li>홍보물 (브로셔, 전단, 영상물 등) 기획 / 제작</li>
+              <li>홍보논리 개발 및 경쟁사 대응논리 개발</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2: 총회 대행업무 -->
+    <div class="tab-panel" id="tab2">
+      <div class="service-card">
+        <div class="service-card-header">
+          <div class="service-card-icon">📋</div>
+          <div>
+            <div class="service-card-title">총회 대행업무</div>
+            <div class="service-card-sub">총회 준비부터 개최, 홍보요원 전문화까지 전반적인 총회 업무 대행</div>
+          </div>
+        </div>
+        <div class="service-groups">
+          <div class="service-group">
+            <h4>1. 총회 업무지원 및 대행</h4>
+            <ul>
+              <li>서면결의서 등 총회관련 요구 서류 징구</li>
+              <li>총회 직접참석자 비율 충족</li>
+              <li>총회 준비 및 개최 (접수 및 진행) 업무 대행</li>
+            </ul>
+          </div>
+          <div class="service-group">
+            <h4>2. 추진위원회 및 조합업무 지원</h4>
+            <ul>
+              <li>각 단계별 동의서 징구 업무 지원</li>
+              <li>협력업체 선정 총회 업무 지원</li>
+              <li>조합원 명부 및 행정업무 전산화 지원</li>
+            </ul>
+          </div>
+          <div class="service-group">
+            <h4>3. 기획 및 기타 업무</h4>
+            <ul>
+              <li>총회책자 작성 및 DM발송</li>
+              <li>홍보사무실 (현장사무실) 운영</li>
+              <li>집기렌탈 기획 (홍보 및 판촉 기획)</li>
+              <li>전반적인 총회 진행 업무 대행</li>
+              <li>업무 일정에 따른 현황 분석 및 대안 수립</li>
+            </ul>
+          </div>
+          <div class="service-group">
+            <h4>4. 홍보요원의 전문화</h4>
+            <ul>
+              <li>사업지 특성에 따른 철저한 교육과 관리</li>
+              <li>사전 홍보과정을 통해 검증된 인원 구성</li>
+              <li>유경험을 바탕으로 전략적 활동 전개</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 3: 이주관리 -->
+    <div class="tab-panel" id="tab3">
+      <div class="service-card">
+        <div class="service-card-header">
+          <div class="service-card-icon">🚚</div>
+          <div>
+            <div class="service-card-title">이주관리 및 촉진</div>
+            <div class="service-card-sub">이주계획 수립부터 명도소송 지원까지 체계적인 이주관리 서비스</div>
+          </div>
+        </div>
+        <div class="service-groups">
+          <div class="service-group">
+            <h4>1. 이주계획 수립</h4>
+            <ul>
+              <li>사업시행인가 전 세입자 실태조사</li>
+              <li>관리처분인가 후 신속한 거주세대 실태조사</li>
+              <li>전체 거주세대에 대한 통합관리 DB 구축</li>
+              <li>이주관리 전문팀의 현장 상주관리</li>
+              <li>신속한 명도소송 진행을 위한 매뉴얼 완비</li>
+              <li>명도소송 후 신속한 명도집행 프로세스 구축</li>
+            </ul>
+          </div>
+          <div class="service-group">
+            <h4>2. 이주관리 시행</h4>
+            <ul>
+              <li>세입자 주거이전비 및 임대아파트 신청 대행</li>
+              <li>전문팀의 이사 상담</li>
+              <li>미이주세대 리스트관리 및 이사종용</li>
+              <li>실시간 이주예정상황 관리</li>
+              <li>계약 후 3주 이내 거주세대명부 확정</li>
+              <li>이주계획서 제출 (이주완료일 확정)</li>
+              <li>이주진행상황 정보 실시간 공유 (조합, 변호사, 시공사 등)</li>
+              <li>변호사 등 제휴업체 업무연계 강화</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 4: 세입자 조사 -->
+    <div class="tab-panel" id="tab4">
+      <div class="service-card">
+        <div class="service-card-header">
+          <div class="service-card-icon">🔍</div>
+          <div>
+            <div class="service-card-title">세입자 조사</div>
+            <div class="service-card-sub">이주대책 수립을 위한 세입자 및 실 거주자 전문 조사 서비스</div>
+          </div>
+        </div>
+        <div class="service-groups">
+          <div class="service-group">
+            <h4>1. 세입자 조사</h4>
+            <ul>
+              <li>이주대책 해당 / 비해당 세입자 조사</li>
+              <li>실 세입자 이주시기 및 이주지역 조사</li>
+              <li>이주지역 관련 부동산 자료 지원</li>
+              <li>위장전입 세입자 및 기 이주 세입자 등 구분 조사</li>
+              <li>사업시행인가 관련 세입자 이주대책 자료 작성</li>
+            </ul>
+          </div>
+          <div class="service-group">
+            <h4>2. 실 거주자 조사</h4>
+            <ul>
+              <li>이주비 등 금융비용 조사</li>
+              <li>현재 거주민 이주시기 및 이주지역 조사</li>
+              <li>이주지역 관련 부동산 자료 지원</li>
+              <li>현재 거주자 이주대책 및 시기조정 자료 작성</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Org Chart -->
+<section id="org">
+  <div class="section-inner">
+    <div class="section-label">Organization</div>
+    <h2 class="section-title">조직도</h2>
+    <div class="section-divider"></div>
+    <div class="org-chart">
+      <div class="org-ceo">대표이사</div>
+      <div class="org-line"></div>
+      <div class="org-departments">
+        <div class="org-dept-wrap">
+          <div class="org-dept highlight">
+            <div class="org-dept-name">기획팀</div>
+            <ul class="org-dept-tasks">
+              <li>사업추진전략기획</li>
+              <li>포트폴리오구성</li>
+              <li>사전수주활동</li>
+            </ul>
+          </div>
+        </div>
+        <div class="org-dept-wrap">
+          <div class="org-dept highlight">
+            <div class="org-dept-name">사업관리팀</div>
+            <ul class="org-dept-tasks">
+              <li>이주계획수립</li>
+              <li>세입자조사</li>
+              <li>이주지원/공가확인</li>
+            </ul>
+          </div>
+        </div>
+        <div class="org-dept-wrap">
+          <div class="org-dept highlight">
+            <div class="org-dept-name">업무지원팀</div>
+            <ul class="org-dept-tasks">
+              <li>총무 / 재무</li>
+              <li>총회업무수행</li>
+              <li>홍보요원관리</li>
+              <li>지원업무총괄</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="org-advisors">
+        <div class="org-advisor">감 사</div>
+        <div class="org-advisor">자문위원</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Partnership -->
+<section id="partnership">
+  <div class="section-inner">
+    <div class="section-label">Partnership</div>
+    <h2 class="section-title">파트너십</h2>
+    <div class="section-divider"></div>
+    <p class="partnership-lead">유관기업들과의 협력사 / 파트너십 구축을 통한 신뢰성 있는 과업수행의 경쟁력을 확보합니다.</p>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <div class="partner-icon">🏙️</div>
+        <div class="partner-name">도시계획 엔지니어링</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-icon">🏗️</div>
+        <div class="partner-name">철거 · 지장물 이설업체</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-icon">🏢</div>
+        <div class="partner-name">정비사업 전문관리업체</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-icon">📐</div>
+        <div class="partner-name">건축사사무소</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Track Record -->
+<section id="record">
+  <div class="section-inner">
+    <div class="section-label">Track Record</div>
+    <h2 class="section-title">주요 실적</h2>
+    <div class="section-divider"></div>
+
+    <div class="record-intro">
+      <div class="stat-card">
+        <div class="stat-num">50<span>+</span></div>
+        <div class="stat-label">수주 컨설팅 주요 실적</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">40<span>+</span></div>
+        <div class="stat-label">총회 대행 실적</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">25<span>+</span></div>
+        <div class="stat-label">동의서 징구 실적</div>
+      </div>
+    </div>
+
+    <div class="record-tabs">
+      <button class="rec-tab active" data-rec="rec1">수주 실적</button>
+      <button class="rec-tab" data-rec="rec2">총회 대행 실적</button>
+      <button class="rec-tab" data-rec="rec3">동의서 실적</button>
+    </div>
+
+    <!-- 수주 실적 -->
+    <div class="rec-panel active" id="rec1">
+      <div style="margin-bottom:0.75rem;font-size:0.82rem;color:var(--muted);">* ~2021.03 (구) 레보디앤씨 / 2021.04~ (현) 다옴디앤씨 임원 주요 실적 기준</div>
+      <div class="award-grid">
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">인천 동양아파트 재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">인천 안국아파트 재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">인천 산곡 제1구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">부천 약대주공 재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 청파1가 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">인천 부평제5구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">과천 주공6단지 재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 개포주공4단지 재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 개포주공3단지 재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">안양 포일주공 재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 도곡동 동신아파트 리모델링</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 대흥3구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 연희1구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 보문3구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 수색8구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 염리나구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 용강2구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 대흥2구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">대구 신암4구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 응봉 대림1차 리모델링</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">성남 도환중1구역 도시환경정비사업 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">성남 동양아파트 재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">광명 푸른광명아파트 재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 여의도 삼부아파트 리모델링</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 증산2구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 응암3구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 장위8구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">부천 원미7B구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">안양 진흥아파트 재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">안양 임곡3지구 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">안산 원곡2구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">의왕 내손라구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">안양 호원초교구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 방배5구역 단독주택재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">성남 매화마을1단지 리모델링</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">거제 장평주공1단지 재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 행당6구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 당산 상아·현대 재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">인천 청천2구역 재개발 (뉴스테이)</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">인천 효성1구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">부산 삼익비치 재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">부산 우동 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">인천 부평2구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">안산 고잔9구역 재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">부천 송내1-1구역 재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">광주 풍향구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">인천 송도영남아파트 재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 고척4구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">원주 단구동14통구역 재개발</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서울 신반포18차 재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">남양주 진주아파트 재건축</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">부천 괴안2D구역 도시환경정비사업</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">광주 탄벌동지역주택조합</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">안양 평촌목련3단지 리모델링</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">안양 소곡지구 재개발</div></div>
+      </div>
+    </div>
+
+    <!-- 총회 대행 실적 -->
+    <div class="rec-panel" id="rec2">
+      <div style="margin-bottom:0.75rem;font-size:0.82rem;color:var(--muted);">* ~2021.03 (구) 레보디앤씨 / 2021.04~ (현) 다옴디앤씨 업무 주요 실적 기준</div>
+      <div class="record-table-wrap">
+        <table class="record-table">
+          <thead>
+            <tr><th style="width:110px">연도</th><th>구역명</th><th style="width:200px">용역 업무</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="year-badge">2017</span></td><td>부개지역주택조합</td><td>정기총회</td></tr>
+            <tr><td><span class="year-badge">2017–18</span></td><td>강남아파트주택재건축정비사업조합</td><td>사업시행인가변경 총회 / 시공자선정 총회 / 관리처분계획인가 총회</td></tr>
+            <tr><td><span class="year-badge">2018–20</span></td><td>금호15구역주택재개발정비사업조합</td><td>2018·2019·2020 정기총회</td></tr>
+            <tr><td><span class="year-badge">2018–20</span></td><td>송내1-1구역주택재건축정비사업조합</td><td>정기총회 / 사업시행인가 총회 (다수)</td></tr>
+            <tr><td><span class="year-badge">2019–21</span></td><td>송도영남아파트재건축정비사업조합</td><td>정기총회 / 임시총회 (다수)</td></tr>
+            <tr><td><span class="year-badge">2020</span></td><td>이도주공1단지재건축정비사업조합</td><td>수주홍보용역 1·2차</td></tr>
+            <tr><td><span class="year-badge">2020</span></td><td>단구동14통구역주택재개발정비사업조합</td><td>분양신청 / 관리처분계획인가 총회</td></tr>
+            <tr><td><span class="year-badge">2020</span></td><td>안양소곡지구재개발정비사업조합</td><td>정기총회</td></tr>
+            <tr><td><span class="year-badge">2020</span></td><td>광주탄벌동두산위브지역주택조합</td><td>정기총회</td></tr>
+            <tr><td><span class="year-badge">2020</span></td><td>신반포18차주택재건축정비사업조합</td><td>분양신청 / 관리처분계획인가 총회</td></tr>
+            <tr><td><span class="year-badge">2020.05</span></td><td>역삼동 주택재건축조합</td><td>사업시행인가 총회</td></tr>
+            <tr><td><span class="year-badge">2020.09</span></td><td>남양주 진주아파트 주택재건축조합</td><td>임시총회</td></tr>
+            <tr><td><span class="year-badge">2020.11</span></td><td>평촌 목련3단지 우성아파트 리모델링조합</td><td>임시총회</td></tr>
+            <tr><td><span class="year-badge">2020.12</span></td><td>소곡지구 주택재개발 정비사업조합</td><td>정기총회</td></tr>
+            <tr><td><span class="year-badge">2021.02</span></td><td>송도영남아파트 주택재건축정비사업조합</td><td>정기총회</td></tr>
+            <tr><td><span class="year-badge">2021.04</span></td><td>가락삼익맨숀 재건축조합</td><td>정기총회</td></tr>
+            <tr><td><span class="year-badge">2021.04</span></td><td>평촌 목련3단지 우성아파트 리모델링조합</td><td>정기총회</td></tr>
+            <tr><td><span class="year-badge">2021.05</span></td><td>장위7구역 주택재개발정비사업조합</td><td>임시총회</td></tr>
+            <tr><td><span class="year-badge">2021.07</span></td><td>대구 노원2동 주택재개발정비사업조합</td><td>임시총회</td></tr>
+            <tr><td><span class="year-badge">2021.11</span></td><td>원주 원동주공아파트 주택재건축정비사업조합</td><td>GS건설 수주</td></tr>
+            <tr><td><span class="year-badge">2021.11</span></td><td>소곡지구 주택재개발정비사업조합</td><td>정기총회</td></tr>
+            <tr><td><span class="year-badge">2021.12</span></td><td>원주 단구동14통 주택재개발정비사업조합</td><td>정기총회</td></tr>
+            <tr><td><span class="year-badge">2021.12</span></td><td>신반포청구아파트 리모델링 조합</td><td>조합창립총회</td></tr>
+            <tr><td><span class="year-badge">2022.03</span></td><td>신반포18차337동 주택재건축정비사업조합</td><td>재분양신청</td></tr>
+            <tr><td><span class="year-badge">2022.04</span></td><td>장위7구역 주택재개발정비사업조합</td><td>정기총회</td></tr>
+            <tr><td><span class="year-badge">2022.04</span></td><td>원주 단계주공아파트 주택재건축정비사업조합</td><td>GS건설 수주 사전작업</td></tr>
+            <tr><td><span class="year-badge">2022.06</span></td><td>능곡연합주택재건축정비사업조합</td><td>정기총회</td></tr>
+            <tr><td><span class="year-badge">2022.09</span></td><td>사당2동지역주택조합</td><td>임시총회</td></tr>
+            <tr><td><span class="year-badge">2022.10</span></td><td>안양소곡지구주택재개발정비사업조합</td><td>정기(해산,청산)총회</td></tr>
+            <tr><td><span class="year-badge">2022.11</span></td><td>송도영남아파트주택재건축정비사업조합</td><td>정기(관리처분)총회</td></tr>
+            <tr><td><span class="year-badge">2022.12</span></td><td>송도영남아파트주택재건축정비사업조합</td><td>정기총회 (동의서 100% 징구)</td></tr>
+            <tr><td><span class="year-badge">2023.01</span></td><td>장위7구역주택재개발정비사업조합</td><td>임시총회</td></tr>
+            <tr><td><span class="year-badge">2023.02</span></td><td>신반포18차 337동 주택재건축정비사업조합</td><td>정기총회</td></tr>
+            <tr><td><span class="year-badge">2023.03</span></td><td>용인역북지역주택조합</td><td>입주관련 업무 (4개월)</td></tr>
+            <tr><td><span class="year-badge">2023.04</span></td><td>신반포 청구아파트리모델링주택조합</td><td>정기총회</td></tr>
+            <tr><td><span class="year-badge">2023.04</span></td><td>백운주택1구역 주택재개발정비사업조합</td><td>정기총회</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 동의서 실적 -->
+    <div class="rec-panel" id="rec3">
+      <div style="margin-bottom:0.75rem;font-size:0.82rem;color:var(--muted);">* 임원 주요 동의서 징구 실적 (대표 사례)</div>
+      <div class="award-grid">
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">개포주공4단지 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">남서울 한양아파트 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">신길제5-2구역 재개발 추진위 설립 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">동대문구 이문동 이경구역 추진위설립동의서 및 구역지정 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">인천 숭의동 전도관구역 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">가락시영 아파트 재건축 정비사업조합 설립 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">둔촌 주공아파트 주택재건축 정비사업조합 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">안양소곡지구 주택재개발조합설립 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">월곡동 도심재개발 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">게수 범박지구 재개발 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">인천 숭의동 전도관구역 추진위원회 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">인천 숭의동 전도관구역 조합설립 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">용현동 영남, 부성 아파트 사업변경 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">안양 임곡지구 추진위원회 설립동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">왕십리 1-5구역 조합설립 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">용산 국제업무도시 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">경동구역 도시환경 정비사업조합 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">북아현1-1구역 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">당산 상아, 현대아파트 재건축 조합설립동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">가재울뉴타운5구역 주택재개발 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">증산2구역 재정비촉진구역 주택재건축정비사업조합 설립 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">효성1구역 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">서초우성아파트 주택재건축정비사업조합 설립 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">불광5구역 주택재개발조합 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">고잔3구역 추진위원회 설립동의서</div></div>
+        <div class="award-item" style="grid-column:1/-1;justify-content:center;background:var(--light);"><div class="award-text" style="color:var(--muted);font-style:italic;">그 외 다수</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">연락처</h2>
+    <div class="section-divider"></div>
+    <div class="contact-grid">
+      <div>
+        <ul class="contact-info-list">
+          <li>
+            <div class="ci-icon">🏢</div>
+            <div>
+              <div class="ci-label">ADDRESS</div>
+              <div class="ci-value">인천시 남동구 미래로 6, 1909호</div>
+            </div>
+          </li>
+          <li>
+            <div class="ci-icon">📞</div>
+            <div>
+              <div class="ci-label">TEL</div>
+              <div class="ci-value">010-2676-5318</div>
+            </div>
+          </li>
+          <li>
+            <div class="ci-icon">🖨️</div>
+            <div>
+              <div class="ci-label">FAX</div>
+              <div class="ci-value">032-213-9600</div>
+            </div>
+          </li>
+          <li>
+            <div class="ci-icon">✉️</div>
+            <div>
+              <div class="ci-label">E-MAIL</div>
+              <div class="ci-value">daom426@naver.com</div>
+            </div>
+          </li>
+          <li>
+            <div class="ci-icon">👤</div>
+            <div>
+              <div class="ci-label">대표이사</div>
+              <div class="ci-value">권 형 명</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="contact-map-placeholder">
+          <div class="map-icon">📍</div>
+          <div>인천시 남동구 미래로 6, 1909호</div>
+          <div style="font-size:0.78rem;margin-top:0.25rem;">㈜다옴디앤씨 본사</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div style="max-width:1200px;margin:0 auto;">
+      Copyright © 2024 ㈜다옴디앤씨 DAOM D&amp;C Co., Ltd. All rights reserved.
+    </div>
+  </footer>
+</section>
+
+<script>
+  // Nav toggle (mobile)
+  const toggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Business tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Record tabs
+  document.querySelectorAll('.rec-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.rec-tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.rec-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.rec).classList.add('active');
+    });
+  });
+
+  // Scroll-activated nav
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.background = window.scrollY > 60
+      ? 'rgba(15, 36, 85, 0.98)'
+      : 'rgba(15, 36, 85, 0.97)';
+  });
+
+  // Simple fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.overview-item, .partner-card, .stat-card, .award-item, .service-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
