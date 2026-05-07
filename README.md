@@ -26,6 +26,10 @@ daom/
 - 주요 실적
 - 연락처
 
+## 미리보기
+
+[웹사이트 미리보기](https://raw.githack.com/hebinalee/daomdnc/master/index.html)
+
 ## 실행 방법
 
 `index.html`을 브라우저에서 직접 열면 됩니다. 별도 빌드 과정 없음.
