@@ -1,13 +1,18 @@
 # 다옴디앤씨 회사 소개 웹페이지
 
+<img src="assets/logo-horizontal.png" alt="다옴디앤씨 로고" width="240" />
+
 ㈜다옴디앤씨 (DAOM D&C Co., Ltd.) 회사 소개 단일 페이지 웹사이트입니다.
 
 ## 파일 구조
 
 ```
 daom/
-├── index.html        # 메인 웹페이지 (HTML/CSS/JS 단일 파일)
-├── references/       # 참고 자료 (git 추적 제외)
+├── assets/
+│   ├── logo-horizontal.png   # 가로형 로고
+│   └── logo-stacked.png      # 세로형 로고
+├── index.html                # 메인 웹페이지 (HTML/CSS/JS 단일 파일)
+├── references/               # 참고 자료 (git 추적 제외)
 └── README.md
 ```
 

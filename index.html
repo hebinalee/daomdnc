@@ -10,21 +10,22 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
-      color: #1a1a2e;
+      color: #1a1a1a;
       background: #fff;
       line-height: 1.7;
     }
 
     /* ─── Variables ─── */
     :root {
-      --navy: #0f2455;
-      --blue: #1a5fc0;
-      --accent: #2e84e5;
-      --gold: #c9a84c;
-      --light: #f4f7fc;
-      --border: #dde4f0;
-      --text: #1a1a2e;
-      --muted: #6b7a99;
+      --green:       #01544A;   /* brand primary */
+      --green-dark:  #013d35;   /* darker shade */
+      --green-mid:   #026b5d;   /* mid tone */
+      --green-light: #e8f2f1;   /* tint background */
+      --green-pale:  #f2f8f7;   /* very light tint */
+      --cream:       #faf8f5;   /* warm off-white */
+      --text:        #1a1a1a;
+      --muted:       #5e7270;
+      --border:      #d4e3e1;
     }
 
     /* ─── Navigation ─── */
@@ -32,14 +33,13 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 1000;
-      background: rgba(15, 36, 85, 0.97);
-      backdrop-filter: blur(8px);
-      height: 64px;
+      background: rgba(1, 84, 74, 0.97);
+      backdrop-filter: blur(10px);
+      height: 68px;
       display: flex;
       align-items: center;
       padding: 0 5%;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.25);
-      transition: background 0.3s;
+      box-shadow: 0 2px 24px rgba(1,84,74,0.25);
     }
     .nav-inner {
       width: 100%;
@@ -49,35 +49,32 @@
       align-items: center;
       justify-content: space-between;
     }
-    .nav-logo {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: 0.04em;
-      text-decoration: none;
+    .nav-logo img {
+      height: 28px;
+      filter: brightness(0) invert(1);
     }
-    .nav-logo span { color: var(--gold); }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
-      color: rgba(255,255,255,0.82);
+      color: rgba(255,255,255,0.8);
       text-decoration: none;
       font-size: 0.88rem;
       letter-spacing: 0.02em;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover { color: #fff; }
     .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .nav-toggle span { width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: 0.3s; }
+    .nav-toggle span { width: 24px; height: 2px; background: #fff; border-radius: 2px; }
 
     /* ─── Hero ─── */
     #hero {
       min-height: 100vh;
-      background: linear-gradient(135deg, #0a1a3e 0%, #0f2455 50%, #1a3a6e 100%);
+      background:
+        linear-gradient(160deg, #013d35 0%, #01544A 45%, #026b5d 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 100px 5% 60px;
+      padding: 110px 5% 80px;
       position: relative;
       overflow: hidden;
     }
@@ -86,81 +83,86 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 60% 60% at 20% 80%, rgba(46,132,229,0.15) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 50% at 80% 20%, rgba(201,168,76,0.12) 0%, transparent 60%);
+        radial-gradient(ellipse 55% 55% at 15% 85%, rgba(255,255,255,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 45% at 85% 15%, rgba(255,255,255,0.05) 0%, transparent 60%);
     }
-    .hero-content { position: relative; z-index: 1; max-width: 860px; }
-    .hero-badge {
-      display: inline-block;
-      background: rgba(201,168,76,0.18);
-      border: 1px solid rgba(201,168,76,0.4);
-      color: var(--gold);
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      padding: 5px 16px;
-      border-radius: 20px;
-      margin-bottom: 1.5rem;
-      text-transform: uppercase;
+    /* decorative circles */
+    #hero::after {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.07);
+      bottom: -200px; right: -150px;
+      pointer-events: none;
+    }
+    .hero-deco {
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.06);
+      top: -100px; left: -80px;
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 820px; }
+    .hero-logo {
+      margin-bottom: 2.5rem;
+    }
+    .hero-logo img {
+      height: 72px;
+      filter: brightness(0) invert(1);
+    }
+    .hero-divider {
+      width: 1px; height: 60px;
+      background: rgba(255,255,255,0.25);
+      margin: 0 auto 2rem;
     }
     .hero-title {
-      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
       font-weight: 800;
       color: #fff;
-      line-height: 1.2;
+      line-height: 1.22;
       letter-spacing: -0.01em;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
     }
-    .hero-title em { color: var(--gold); font-style: normal; }
     .hero-subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 0.75rem;
-    }
-    .hero-tagline {
-      font-size: clamp(0.95rem, 2vw, 1.1rem);
-      color: rgba(255,255,255,0.55);
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: rgba(255,255,255,0.72);
       margin-bottom: 2.5rem;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.01em;
     }
     .hero-services {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
       margin-bottom: 3rem;
     }
     .hero-tag {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.85);
-      padding: 6px 18px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.9);
+      padding: 7px 20px;
       border-radius: 30px;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
+      letter-spacing: 0.02em;
+      transition: background 0.2s;
     }
-    .hero-cta {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+    .hero-tag:hover { background: rgba(255,255,255,0.18); }
+    .hero-cta { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
     .btn {
       padding: 14px 32px;
       border-radius: 6px;
-      font-size: 0.95rem;
+      font-size: 0.93rem;
       font-weight: 600;
       text-decoration: none;
       transition: all 0.25s;
       display: inline-block;
+      letter-spacing: 0.02em;
     }
-    .btn-primary {
-      background: var(--gold);
-      color: #1a1a2e;
-    }
-    .btn-primary:hover { background: #e0b95a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.4); }
-    .btn-outline {
-      border: 2px solid rgba(255,255,255,0.4);
-      color: #fff;
-    }
+    .btn-white { background: #fff; color: var(--green); }
+    .btn-white:hover { background: #f0f0f0; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+    .btn-outline { border: 2px solid rgba(255,255,255,0.45); color: #fff; }
     .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
     .hero-scroll {
       position: absolute;
@@ -170,135 +172,161 @@
       flex-direction: column;
       align-items: center;
       gap: 6px;
-      color: rgba(255,255,255,0.4);
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.35);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
     }
     .scroll-arrow {
-      width: 20px; height: 20px;
-      border-right: 2px solid rgba(255,255,255,0.4);
-      border-bottom: 2px solid rgba(255,255,255,0.4);
+      width: 18px; height: 18px;
+      border-right: 2px solid rgba(255,255,255,0.35);
+      border-bottom: 2px solid rgba(255,255,255,0.35);
       transform: rotate(45deg);
       animation: bounce 1.6s infinite;
     }
-    @keyframes bounce { 0%,100%{transform:rotate(45deg) translateY(0)} 50%{transform:rotate(45deg) translateY(5px)} }
+    @keyframes bounce {
+      0%,100%{ transform: rotate(45deg) translateY(0) }
+      50%{ transform: rotate(45deg) translateY(5px) }
+    }
 
     /* ─── Sections ─── */
-    section { padding: 90px 5%; }
+    section { padding: 96px 5%; }
     .section-inner { max-width: 1200px; margin: 0 auto; }
     .section-label {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.15em;
+      color: var(--green);
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.55rem;
     }
     .section-title {
       font-size: clamp(1.7rem, 3.5vw, 2.4rem);
       font-weight: 800;
-      color: var(--navy);
-      margin-bottom: 0.6rem;
+      color: var(--green-dark);
+      margin-bottom: 0.55rem;
       line-height: 1.25;
     }
     .section-divider {
-      width: 48px; height: 4px;
-      background: var(--gold);
+      width: 40px; height: 3px;
+      background: var(--green);
       border-radius: 2px;
       margin-bottom: 1.5rem;
     }
     .section-lead {
-      font-size: 1.05rem;
+      font-size: 1.03rem;
       color: var(--muted);
       max-width: 640px;
-      line-height: 1.75;
+      line-height: 1.78;
     }
 
     /* ─── CEO Message ─── */
-    #ceo { background: var(--light); }
+    #ceo { background: var(--cream); }
     .ceo-grid {
       display: grid;
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 280px 1fr;
       gap: 4rem;
       align-items: start;
       margin-top: 3rem;
     }
     .ceo-card {
-      background: var(--navy);
+      background: var(--green);
       border-radius: 16px;
       padding: 2.5rem 2rem;
       text-align: center;
       color: #fff;
     }
     .ceo-avatar {
-      width: 88px; height: 88px;
+      width: 80px; height: 80px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue), var(--accent));
+      background: rgba(255,255,255,0.15);
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 1.2rem;
-      font-size: 2.2rem;
+      font-size: 2rem;
     }
-    .ceo-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.3rem; }
-    .ceo-title { font-size: 0.85rem; color: var(--gold); letter-spacing: 0.05em; }
-    .ceo-company { font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem; }
+    .ceo-name { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .ceo-title { font-size: 0.82rem; color: rgba(255,255,255,0.7); letter-spacing: 0.05em; }
+    .ceo-company {
+      margin-top: 1.2rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    .ceo-company img {
+      height: 22px;
+      filter: brightness(0) invert(1);
+      opacity: 0.85;
+    }
     .ceo-message blockquote {
-      font-size: 1.05rem;
-      color: #2c3e50;
+      font-size: 1.04rem;
+      color: #2c3e3d;
       line-height: 1.9;
-      padding-left: 1.5rem;
-      border-left: 3px solid var(--gold);
-      margin-bottom: 2rem;
+      padding-left: 1.4rem;
+      border-left: 3px solid var(--green);
+      margin-bottom: 1.8rem;
     }
     .ceo-message p {
-      color: var(--muted);
-      line-height: 1.85;
+      color: #4a5c5a;
+      line-height: 1.9;
       margin-bottom: 1rem;
     }
+    .ceo-message p strong { color: var(--green-dark); }
 
     /* ─── Company Overview ─── */
     #overview { background: #fff; }
     .overview-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 1.25rem;
       margin-top: 3rem;
     }
     .overview-item {
       display: flex;
       gap: 1rem;
-      padding: 1.4rem;
+      padding: 1.4rem 1.6rem;
       border: 1px solid var(--border);
       border-radius: 12px;
-      transition: box-shadow 0.2s, transform 0.2s;
+      transition: box-shadow 0.2s, border-color 0.2s;
     }
-    .overview-item:hover { box-shadow: 0 8px 28px rgba(15,36,85,0.1); transform: translateY(-2px); }
+    .overview-item:hover {
+      box-shadow: 0 6px 24px rgba(1,84,74,0.1);
+      border-color: rgba(1,84,74,0.3);
+    }
     .overview-icon {
       flex-shrink: 0;
-      width: 44px; height: 44px;
-      background: var(--light);
+      width: 42px; height: 42px;
+      background: var(--green-light);
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
     }
     .overview-label {
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: var(--muted);
       letter-spacing: 0.04em;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
     }
     .overview-value {
-      font-size: 0.97rem;
+      font-size: 0.95rem;
       font-weight: 600;
-      color: var(--navy);
+      color: var(--green-dark);
       line-height: 1.55;
+    }
+    .biz-tag {
+      display: inline-block;
+      background: var(--green-pale);
+      border: 1px solid var(--border);
+      color: var(--green);
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      margin: 2px;
     }
 
     /* ─── Business Areas ─── */
-    #business { background: var(--light); }
+    #business { background: var(--green-pale); }
     .business-tabs {
       display: flex;
       gap: 0.5rem;
@@ -311,14 +339,14 @@
       border-radius: 6px;
       background: #fff;
       color: var(--muted);
-      font-size: 0.88rem;
+      font-size: 0.87rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
     }
     .tab-btn.active, .tab-btn:hover {
-      background: var(--navy);
-      border-color: var(--navy);
+      background: var(--green);
+      border-color: var(--green);
       color: #fff;
     }
     .tab-panel { display: none; }
@@ -335,71 +363,62 @@
       gap: 1rem;
       margin-bottom: 2rem;
       padding-bottom: 1.5rem;
-      border-bottom: 2px solid var(--light);
+      border-bottom: 1px solid var(--border);
     }
     .service-card-icon {
-      width: 56px; height: 56px;
-      background: linear-gradient(135deg, var(--navy), var(--blue));
+      width: 54px; height: 54px;
+      background: var(--green);
       border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       flex-shrink: 0;
     }
-    .service-card-title { font-size: 1.35rem; font-weight: 800; color: var(--navy); }
-    .service-card-sub { font-size: 0.88rem; color: var(--muted); margin-top: 0.15rem; }
+    .service-card-title { font-size: 1.3rem; font-weight: 800; color: var(--green-dark); }
+    .service-card-sub { font-size: 0.87rem; color: var(--muted); margin-top: 0.15rem; }
     .service-groups {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
       gap: 1.5rem;
     }
     .service-group h4 {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 700;
-      color: var(--blue);
-      margin-bottom: 0.75rem;
+      color: var(--green);
+      margin-bottom: 0.7rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
     .service-group h4::before {
       content: '';
-      width: 8px; height: 8px;
-      background: var(--gold);
+      width: 7px; height: 7px;
+      background: var(--green);
       border-radius: 50%;
       flex-shrink: 0;
     }
     .service-group ul { list-style: none; }
     .service-group li {
-      font-size: 0.87rem;
+      font-size: 0.86rem;
       color: #444;
-      padding: 4px 0 4px 16px;
+      padding: 4px 0 4px 14px;
       position: relative;
       line-height: 1.5;
     }
-    .service-group li::before {
-      content: '–';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-    }
+    .service-group li::before { content: '–'; position: absolute; left: 0; color: var(--green-mid); }
 
     /* ─── Org Chart ─── */
     #org { background: #fff; }
-    .org-chart {
-      margin-top: 3rem;
-      text-align: center;
-    }
+    .org-chart { margin-top: 3rem; text-align: center; }
     .org-ceo {
       display: inline-block;
-      background: var(--navy);
+      background: var(--green);
       color: #fff;
-      padding: 14px 40px;
+      padding: 14px 44px;
       border-radius: 10px;
       font-weight: 700;
       font-size: 1rem;
-      margin-bottom: 0;
       position: relative;
     }
     .org-ceo::after {
@@ -421,7 +440,7 @@
       position: absolute;
       top: 0; left: 50%;
       transform: translateX(-50%);
-      width: 70%; height: 2px;
+      width: 68%; height: 2px;
       background: var(--border);
     }
     .org-departments {
@@ -429,13 +448,11 @@
       justify-content: center;
       gap: 2rem;
       flex-wrap: wrap;
-      margin-top: 0;
     }
     .org-dept-wrap {
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: relative;
     }
     .org-dept-wrap::before {
       content: '';
@@ -443,83 +460,82 @@
       background: var(--border);
     }
     .org-dept {
-      background: var(--light);
+      background: var(--green-pale);
       border: 2px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem 1.4rem;
-      min-width: 160px;
+      border-radius: 12px;
+      padding: 1.1rem 1.4rem;
+      min-width: 162px;
       text-align: center;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .org-dept.highlight { border-color: var(--blue); background: rgba(26,95,192,0.05); }
+    .org-dept:hover {
+      border-color: var(--green);
+      box-shadow: 0 4px 16px rgba(1,84,74,0.12);
+    }
     .org-dept-name {
       font-weight: 700;
       font-size: 0.95rem;
-      color: var(--navy);
+      color: var(--green-dark);
       margin-bottom: 0.5rem;
     }
     .org-dept-tasks {
       list-style: none;
       font-size: 0.78rem;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.65;
     }
     .org-advisors {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 1.2rem;
       margin-top: 2.5rem;
       flex-wrap: wrap;
     }
     .org-advisor {
-      background: linear-gradient(135deg, var(--gold), #e0b95a);
-      color: #1a1a2e;
-      padding: 8px 24px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      border: 1px solid var(--border);
+      padding: 8px 28px;
       border-radius: 8px;
-      font-size: 0.85rem;
+      font-size: 0.87rem;
       font-weight: 600;
     }
 
     /* ─── Partnership ─── */
-    #partnership { background: var(--navy); }
-    #partnership .section-label { color: var(--gold); }
+    #partnership { background: var(--green); }
+    #partnership .section-label { color: rgba(255,255,255,0.6); }
     #partnership .section-title { color: #fff; }
+    #partnership .section-divider { background: rgba(255,255,255,0.4); }
     .partnership-lead {
-      color: rgba(255,255,255,0.65);
+      color: rgba(255,255,255,0.68);
       font-size: 1rem;
       max-width: 600px;
-      line-height: 1.75;
+      line-height: 1.8;
       margin-bottom: 3rem;
     }
     .partners-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1.5rem;
+      gap: 1.25rem;
     }
     .partner-card {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
       border-radius: 14px;
       padding: 2rem 1.5rem;
       text-align: center;
       transition: background 0.2s, transform 0.2s;
     }
-    .partner-card:hover { background: rgba(255,255,255,0.12); transform: translateY(-3px); }
-    .partner-icon {
-      font-size: 2.4rem;
-      margin-bottom: 1rem;
-    }
-    .partner-name {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #fff;
-    }
+    .partner-card:hover { background: rgba(255,255,255,0.14); transform: translateY(-3px); }
+    .partner-icon { font-size: 2.2rem; margin-bottom: 0.9rem; }
+    .partner-name { font-size: 0.93rem; font-weight: 700; color: #fff; line-height: 1.4; }
 
     /* ─── Track Record ─── */
-    #record { background: var(--light); }
+    #record { background: var(--cream); }
     .record-intro {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 1.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
       margin: 3rem 0;
     }
     .stat-card {
@@ -528,15 +544,17 @@
       padding: 1.8rem 1.5rem;
       text-align: center;
       border: 1px solid var(--border);
+      transition: box-shadow 0.2s;
     }
+    .stat-card:hover { box-shadow: 0 6px 24px rgba(1,84,74,0.1); }
     .stat-num {
-      font-size: 2.6rem;
+      font-size: 2.8rem;
       font-weight: 900;
-      color: var(--navy);
+      color: var(--green);
       line-height: 1;
     }
-    .stat-num span { color: var(--gold); font-size: 1.6rem; }
-    .stat-label { font-size: 0.88rem; color: var(--muted); margin-top: 0.4rem; }
+    .stat-num span { font-size: 1.6rem; }
+    .stat-label { font-size: 0.87rem; color: var(--muted); margin-top: 0.4rem; }
     .record-tabs {
       display: flex;
       gap: 0.5rem;
@@ -554,7 +572,7 @@
       color: var(--muted);
       transition: all 0.2s;
     }
-    .rec-tab.active, .rec-tab:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .rec-tab.active, .rec-tab:hover { background: var(--green); color: #fff; border-color: var(--green); }
     .rec-panel { display: none; }
     .rec-panel.active { display: block; }
     .record-table-wrap {
@@ -563,18 +581,14 @@
       overflow: hidden;
       border: 1px solid var(--border);
     }
-    .record-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.88rem;
-    }
+    .record-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
     .record-table th {
-      background: var(--navy);
+      background: var(--green);
       color: #fff;
       padding: 12px 16px;
       text-align: left;
       font-weight: 600;
-      font-size: 0.83rem;
+      font-size: 0.82rem;
       letter-spacing: 0.03em;
     }
     .record-table td {
@@ -584,50 +598,50 @@
       vertical-align: top;
     }
     .record-table tr:last-child td { border-bottom: none; }
-    .record-table tr:nth-child(even) td { background: #fafbfe; }
+    .record-table tr:nth-child(even) td { background: var(--green-pale); }
     .year-badge {
       display: inline-block;
-      background: var(--blue);
-      color: #fff;
-      padding: 2px 8px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      padding: 2px 9px;
       border-radius: 4px;
-      font-size: 0.78rem;
-      font-weight: 600;
+      font-size: 0.77rem;
+      font-weight: 700;
       white-space: nowrap;
     }
     .award-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 0.8rem;
+      gap: 0.75rem;
     }
     .award-item {
       background: #fff;
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 0.9rem 1.1rem;
+      padding: 0.85rem 1.1rem;
       display: flex;
       align-items: flex-start;
       gap: 0.75rem;
-      transition: box-shadow 0.2s;
+      transition: box-shadow 0.2s, border-color 0.2s;
     }
-    .award-item:hover { box-shadow: 0 4px 16px rgba(15,36,85,0.1); }
+    .award-item:hover {
+      box-shadow: 0 4px 16px rgba(1,84,74,0.1);
+      border-color: rgba(1,84,74,0.3);
+    }
     .award-bullet {
       flex-shrink: 0;
-      width: 8px; height: 8px;
-      background: var(--gold);
+      width: 7px; height: 7px;
+      background: var(--green);
       border-radius: 50%;
       margin-top: 6px;
     }
-    .award-text {
-      font-size: 0.86rem;
-      color: #333;
-      line-height: 1.55;
-    }
+    .award-text { font-size: 0.85rem; color: #333; line-height: 1.55; }
 
     /* ─── Contact / Footer ─── */
-    #contact { background: var(--navy); padding-bottom: 0; }
+    #contact { background: var(--green-dark); padding-bottom: 0; }
+    #contact .section-label { color: rgba(255,255,255,0.55); }
     #contact .section-title { color: #fff; }
-    #contact .section-label { color: var(--gold); }
+    #contact .section-divider { background: rgba(255,255,255,0.35); }
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -644,42 +658,54 @@
       color: rgba(255,255,255,0.8);
     }
     .contact-info-list li:last-child { border-bottom: none; }
-    .ci-icon {
-      font-size: 1.2rem;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
+    .ci-icon { font-size: 1.15rem; flex-shrink: 0; margin-top: 2px; }
     .ci-label {
-      font-size: 0.78rem;
-      color: var(--gold);
-      letter-spacing: 0.06em;
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.08em;
       font-weight: 600;
       margin-bottom: 0.2rem;
     }
     .ci-value { font-size: 0.95rem; }
-    .contact-map-placeholder {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 14px;
+    .contact-brand {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      gap: 0.75rem;
-      padding: 3rem 2rem;
-      color: rgba(255,255,255,0.5);
-      font-size: 0.9rem;
-      text-align: center;
+      gap: 1.5rem;
     }
-    .contact-map-placeholder .map-icon { font-size: 2.5rem; }
+    .contact-brand img {
+      height: 52px;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+    .contact-brand-desc {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.8;
+    }
+    .contact-brand-tagline {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.8);
+      font-weight: 600;
+      line-height: 1.6;
+    }
     footer {
-      background: rgba(0,0,0,0.35);
-      padding: 1.5rem 5%;
+      background: rgba(0,0,0,0.3);
+      padding: 1.4rem 5%;
       margin-top: 4rem;
       text-align: center;
-      color: rgba(255,255,255,0.35);
-      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.78rem;
     }
+
+    /* ─── Fade-in ─── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
 
     /* ─── Responsive ─── */
     @media (max-width: 900px) {
@@ -689,10 +715,19 @@
       .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
     }
     @media (max-width: 640px) {
-      section { padding: 60px 5%; }
+      section { padding: 64px 5%; }
       .record-intro { grid-template-columns: 1fr; }
-      .org-line::before { width: 90%; }
-      .nav-links { display: none; flex-direction: column; position: fixed; top: 64px; left: 0; right: 0; background: var(--navy); padding: 1.5rem 5%; gap: 1rem; border-top: 1px solid rgba(255,255,255,0.1); }
+      .org-line::before { width: 88%; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 68px; left: 0; right: 0;
+        background: var(--green-dark);
+        padding: 1.5rem 5%;
+        gap: 1rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
       .nav-links.open { display: flex; }
       .nav-toggle { display: flex; }
     }
@@ -703,7 +738,9 @@
 <!-- Navigation -->
 <nav>
   <div class="nav-inner">
-    <a href="#hero" class="nav-logo">㈜다옴<span>디앤씨</span></a>
+    <a href="#hero" class="nav-logo">
+      <img src="assets/logo-horizontal.png" alt="다옴디앤씨 로고" />
+    </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#ceo">인사말</a></li>
       <li><a href="#overview">회사소개</a></li>
@@ -719,11 +756,14 @@
 
 <!-- Hero -->
 <section id="hero">
+  <div class="hero-deco"></div>
   <div class="hero-content">
-    <div class="hero-badge">DAOM D&amp;C Co., Ltd.</div>
-    <h1 class="hero-title">신뢰와 성실로 함께하는<br><em>㈜다옴디앤씨</em></h1>
-    <p class="hero-subtitle">재개발·재건축·지역주택사업 전문기업</p>
-    <p class="hero-tagline">오랜 경험과 실무를 기반으로 여러분의 사업 성공을 이끕니다</p>
+    <div class="hero-logo">
+      <img src="assets/logo-horizontal.png" alt="DAOM Development & Construction" />
+    </div>
+    <div class="hero-divider"></div>
+    <h1 class="hero-title">신뢰와 성실로 함께하는<br>정비사업 전문기업</h1>
+    <p class="hero-subtitle">재개발 · 재건축 · 지역주택사업 분야에서<br>오랜 경험과 실무를 기반으로 여러분의 사업을 이끕니다</p>
     <div class="hero-services">
       <span class="hero-tag">수주 컨설팅</span>
       <span class="hero-tag">조합총회 업무대행</span>
@@ -731,14 +771,11 @@
       <span class="hero-tag">세입자 조사</span>
     </div>
     <div class="hero-cta">
-      <a href="#business" class="btn btn-primary">사업 분야 보기</a>
+      <a href="#business" class="btn btn-white">사업 분야 보기</a>
       <a href="#contact" class="btn btn-outline">문의하기</a>
     </div>
   </div>
-  <div class="hero-scroll">
-    SCROLL
-    <div class="scroll-arrow"></div>
-  </div>
+  <div class="hero-scroll">SCROLL<div class="scroll-arrow"></div></div>
 </section>
 
 <!-- CEO Message -->
@@ -753,7 +790,9 @@
           <div class="ceo-avatar">👤</div>
           <div class="ceo-name">권 형 명</div>
           <div class="ceo-title">대표이사 / CEO</div>
-          <div class="ceo-company">㈜다옴디앤씨</div>
+          <div class="ceo-company">
+            <img src="assets/logo-horizontal.png" alt="다옴디앤씨" />
+          </div>
         </div>
       </div>
       <div class="ceo-message">
@@ -780,61 +819,61 @@
     <h2 class="section-title">회사 개요</h2>
     <div class="section-divider"></div>
     <div class="overview-grid">
-      <div class="overview-item">
+      <div class="overview-item fade-in">
         <div class="overview-icon">🏢</div>
         <div>
           <div class="overview-label">상호</div>
-          <div class="overview-value">㈜다옴디앤씨<br><small style="font-weight:400;font-size:0.82rem;color:var(--muted)">DAOM D&amp;C Co.Ltd.</small></div>
+          <div class="overview-value">㈜다옴디앤씨<br><small style="font-weight:400;font-size:0.8rem;color:var(--muted)">DAOM D&amp;C Co.Ltd.</small></div>
         </div>
       </div>
-      <div class="overview-item">
+      <div class="overview-item fade-in">
         <div class="overview-icon">👤</div>
         <div>
           <div class="overview-label">대표이사</div>
           <div class="overview-value">권 형 명</div>
         </div>
       </div>
-      <div class="overview-item">
+      <div class="overview-item fade-in">
         <div class="overview-icon">📍</div>
         <div>
           <div class="overview-label">소재지</div>
           <div class="overview-value">인천시 남동구 미래로 6, 1909호</div>
         </div>
       </div>
-      <div class="overview-item">
+      <div class="overview-item fade-in">
         <div class="overview-icon">📋</div>
         <div>
           <div class="overview-label">사업자등록번호</div>
           <div class="overview-value">337 – 81 – 02215</div>
         </div>
       </div>
-      <div class="overview-item">
+      <div class="overview-item fade-in">
         <div class="overview-icon">📅</div>
         <div>
           <div class="overview-label">설립연도</div>
           <div class="overview-value">2021년 04월</div>
         </div>
       </div>
-      <div class="overview-item">
+      <div class="overview-item fade-in">
         <div class="overview-icon">💼</div>
         <div>
           <div class="overview-label">업태 / 종목</div>
           <div class="overview-value">서비스 / 부동산관련컨설팅, 홍보대행</div>
         </div>
       </div>
-      <div class="overview-item" style="grid-column: 1 / -1;">
+      <div class="overview-item fade-in" style="grid-column:1/-1">
         <div class="overview-icon">📌</div>
         <div>
           <div class="overview-label">사업분야</div>
-          <div class="overview-value" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.3rem;">
-            <span style="background:var(--light);padding:4px 12px;border-radius:20px;font-size:0.83rem;color:var(--navy);">부동산컨설팅업</span>
-            <span style="background:var(--light);padding:4px 12px;border-radius:20px;font-size:0.83rem;color:var(--navy);">분양대행업</span>
-            <span style="background:var(--light);padding:4px 12px;border-radius:20px;font-size:0.83rem;color:var(--navy);">인력공급업</span>
-            <span style="background:var(--light);padding:4px 12px;border-radius:20px;font-size:0.83rem;color:var(--navy);">수주기획 및 대행업</span>
-            <span style="background:var(--light);padding:4px 12px;border-radius:20px;font-size:0.83rem;color:var(--navy);">기업홍보대행업</span>
-            <span style="background:var(--light);padding:4px 12px;border-radius:20px;font-size:0.83rem;color:var(--navy);">이주관리업</span>
-            <span style="background:var(--light);padding:4px 12px;border-radius:20px;font-size:0.83rem;color:var(--navy);">총회대행업</span>
-            <span style="background:var(--light);padding:4px 12px;border-radius:20px;font-size:0.83rem;color:var(--navy);">광고대행업</span>
+          <div style="margin-top:0.4rem">
+            <span class="biz-tag">부동산컨설팅업</span>
+            <span class="biz-tag">분양대행업</span>
+            <span class="biz-tag">인력공급업</span>
+            <span class="biz-tag">수주기획 및 대행업</span>
+            <span class="biz-tag">기업홍보대행업</span>
+            <span class="biz-tag">이주관리업</span>
+            <span class="biz-tag">총회대행업</span>
+            <span class="biz-tag">광고대행업</span>
           </div>
         </div>
       </div>
@@ -849,7 +888,6 @@
     <h2 class="section-title">사업 분야</h2>
     <div class="section-divider"></div>
     <p class="section-lead">㈜다옴디앤씨는 신뢰와 성실을 기반으로 품격 높은 서비스를 제공합니다.</p>
-
     <div class="business-tabs">
       <button class="tab-btn active" data-tab="tab1">🎯 수주 컨설팅</button>
       <button class="tab-btn" data-tab="tab2">📋 총회 대행업무</button>
@@ -857,7 +895,6 @@
       <button class="tab-btn" data-tab="tab4">🔍 세입자 조사</button>
     </div>
 
-    <!-- Tab 1: 수주 컨설팅 -->
     <div class="tab-panel active" id="tab1">
       <div class="service-card">
         <div class="service-card-header">
@@ -896,7 +933,6 @@
       </div>
     </div>
 
-    <!-- Tab 2: 총회 대행업무 -->
     <div class="tab-panel" id="tab2">
       <div class="service-card">
         <div class="service-card-header">
@@ -945,7 +981,6 @@
       </div>
     </div>
 
-    <!-- Tab 3: 이주관리 -->
     <div class="tab-panel" id="tab3">
       <div class="service-card">
         <div class="service-card-header">
@@ -976,7 +1011,7 @@
               <li>실시간 이주예정상황 관리</li>
               <li>계약 후 3주 이내 거주세대명부 확정</li>
               <li>이주계획서 제출 (이주완료일 확정)</li>
-              <li>이주진행상황 정보 실시간 공유 (조합, 변호사, 시공사 등)</li>
+              <li>이주진행상황 정보 실시간 공유</li>
               <li>변호사 등 제휴업체 업무연계 강화</li>
             </ul>
           </div>
@@ -984,7 +1019,6 @@
       </div>
     </div>
 
-    <!-- Tab 4: 세입자 조사 -->
     <div class="tab-panel" id="tab4">
       <div class="service-card">
         <div class="service-card-header">
@@ -1001,7 +1035,7 @@
               <li>이주대책 해당 / 비해당 세입자 조사</li>
               <li>실 세입자 이주시기 및 이주지역 조사</li>
               <li>이주지역 관련 부동산 자료 지원</li>
-              <li>위장전입 세입자 및 기 이주 세입자 등 구분 조사</li>
+              <li>위장전입 세입자 및 기 이주 세입자 구분 조사</li>
               <li>사업시행인가 관련 세입자 이주대책 자료 작성</li>
             </ul>
           </div>
@@ -1031,7 +1065,7 @@
       <div class="org-line"></div>
       <div class="org-departments">
         <div class="org-dept-wrap">
-          <div class="org-dept highlight">
+          <div class="org-dept">
             <div class="org-dept-name">기획팀</div>
             <ul class="org-dept-tasks">
               <li>사업추진전략기획</li>
@@ -1041,7 +1075,7 @@
           </div>
         </div>
         <div class="org-dept-wrap">
-          <div class="org-dept highlight">
+          <div class="org-dept">
             <div class="org-dept-name">사업관리팀</div>
             <ul class="org-dept-tasks">
               <li>이주계획수립</li>
@@ -1051,7 +1085,7 @@
           </div>
         </div>
         <div class="org-dept-wrap">
-          <div class="org-dept highlight">
+          <div class="org-dept">
             <div class="org-dept-name">업무지원팀</div>
             <ul class="org-dept-tasks">
               <li>총무 / 재무</li>
@@ -1076,21 +1110,21 @@
     <div class="section-label">Partnership</div>
     <h2 class="section-title">파트너십</h2>
     <div class="section-divider"></div>
-    <p class="partnership-lead">유관기업들과의 협력사 / 파트너십 구축을 통한 신뢰성 있는 과업수행의 경쟁력을 확보합니다.</p>
+    <p class="partnership-lead">유관기업들과의 협력사 / 파트너십 구축을 통한<br>신뢰성 있는 과업수행의 경쟁력을 확보합니다.</p>
     <div class="partners-grid">
-      <div class="partner-card">
+      <div class="partner-card fade-in">
         <div class="partner-icon">🏙️</div>
         <div class="partner-name">도시계획 엔지니어링</div>
       </div>
-      <div class="partner-card">
+      <div class="partner-card fade-in">
         <div class="partner-icon">🏗️</div>
         <div class="partner-name">철거 · 지장물 이설업체</div>
       </div>
-      <div class="partner-card">
+      <div class="partner-card fade-in">
         <div class="partner-icon">🏢</div>
         <div class="partner-name">정비사업 전문관리업체</div>
       </div>
-      <div class="partner-card">
+      <div class="partner-card fade-in">
         <div class="partner-icon">📐</div>
         <div class="partner-name">건축사사무소</div>
       </div>
@@ -1104,29 +1138,26 @@
     <div class="section-label">Track Record</div>
     <h2 class="section-title">주요 실적</h2>
     <div class="section-divider"></div>
-
     <div class="record-intro">
-      <div class="stat-card">
+      <div class="stat-card fade-in">
         <div class="stat-num">50<span>+</span></div>
         <div class="stat-label">수주 컨설팅 주요 실적</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card fade-in">
         <div class="stat-num">40<span>+</span></div>
         <div class="stat-label">총회 대행 실적</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card fade-in">
         <div class="stat-num">25<span>+</span></div>
         <div class="stat-label">동의서 징구 실적</div>
       </div>
     </div>
-
     <div class="record-tabs">
       <button class="rec-tab active" data-rec="rec1">수주 실적</button>
       <button class="rec-tab" data-rec="rec2">총회 대행 실적</button>
       <button class="rec-tab" data-rec="rec3">동의서 실적</button>
     </div>
 
-    <!-- 수주 실적 -->
     <div class="rec-panel active" id="rec1">
       <div style="margin-bottom:0.75rem;font-size:0.82rem;color:var(--muted);">* ~2021.03 (구) 레보디앤씨 / 2021.04~ (현) 다옴디앤씨 임원 주요 실적 기준</div>
       <div class="award-grid">
@@ -1188,17 +1219,16 @@
       </div>
     </div>
 
-    <!-- 총회 대행 실적 -->
     <div class="rec-panel" id="rec2">
       <div style="margin-bottom:0.75rem;font-size:0.82rem;color:var(--muted);">* ~2021.03 (구) 레보디앤씨 / 2021.04~ (현) 다옴디앤씨 업무 주요 실적 기준</div>
       <div class="record-table-wrap">
         <table class="record-table">
           <thead>
-            <tr><th style="width:110px">연도</th><th>구역명</th><th style="width:200px">용역 업무</th></tr>
+            <tr><th style="width:110px">연도</th><th>구역명</th><th style="width:210px">용역 업무</th></tr>
           </thead>
           <tbody>
             <tr><td><span class="year-badge">2017</span></td><td>부개지역주택조합</td><td>정기총회</td></tr>
-            <tr><td><span class="year-badge">2017–18</span></td><td>강남아파트주택재건축정비사업조합</td><td>사업시행인가변경 총회 / 시공자선정 총회 / 관리처분계획인가 총회</td></tr>
+            <tr><td><span class="year-badge">2017–18</span></td><td>강남아파트주택재건축정비사업조합</td><td>사업시행인가변경·시공자선정·관리처분계획인가 총회</td></tr>
             <tr><td><span class="year-badge">2018–20</span></td><td>금호15구역주택재개발정비사업조합</td><td>2018·2019·2020 정기총회</td></tr>
             <tr><td><span class="year-badge">2018–20</span></td><td>송내1-1구역주택재건축정비사업조합</td><td>정기총회 / 사업시행인가 총회 (다수)</td></tr>
             <tr><td><span class="year-badge">2019–21</span></td><td>송도영남아파트재건축정비사업조합</td><td>정기총회 / 임시총회 (다수)</td></tr>
@@ -1238,14 +1268,13 @@
       </div>
     </div>
 
-    <!-- 동의서 실적 -->
     <div class="rec-panel" id="rec3">
       <div style="margin-bottom:0.75rem;font-size:0.82rem;color:var(--muted);">* 임원 주요 동의서 징구 실적 (대표 사례)</div>
       <div class="award-grid">
         <div class="award-item"><div class="award-bullet"></div><div class="award-text">개포주공4단지 동의서</div></div>
         <div class="award-item"><div class="award-bullet"></div><div class="award-text">남서울 한양아파트 동의서</div></div>
         <div class="award-item"><div class="award-bullet"></div><div class="award-text">신길제5-2구역 재개발 추진위 설립 동의서</div></div>
-        <div class="award-item"><div class="award-bullet"></div><div class="award-text">동대문구 이문동 이경구역 추진위설립동의서 및 구역지정 동의서</div></div>
+        <div class="award-item"><div class="award-bullet"></div><div class="award-text">동대문구 이문동 이경구역 추진위설립 및 구역지정 동의서</div></div>
         <div class="award-item"><div class="award-bullet"></div><div class="award-text">인천 숭의동 전도관구역 동의서</div></div>
         <div class="award-item"><div class="award-bullet"></div><div class="award-text">가락시영 아파트 재건축 정비사업조합 설립 동의서</div></div>
         <div class="award-item"><div class="award-bullet"></div><div class="award-text">둔촌 주공아파트 주택재건축 정비사업조합 동의서</div></div>
@@ -1267,7 +1296,7 @@
         <div class="award-item"><div class="award-bullet"></div><div class="award-text">서초우성아파트 주택재건축정비사업조합 설립 동의서</div></div>
         <div class="award-item"><div class="award-bullet"></div><div class="award-text">불광5구역 주택재개발조합 동의서</div></div>
         <div class="award-item"><div class="award-bullet"></div><div class="award-text">고잔3구역 추진위원회 설립동의서</div></div>
-        <div class="award-item" style="grid-column:1/-1;justify-content:center;background:var(--light);"><div class="award-text" style="color:var(--muted);font-style:italic;">그 외 다수</div></div>
+        <div class="award-item" style="grid-column:1/-1;justify-content:center;background:var(--green-pale);"><div class="award-text" style="color:var(--muted);font-style:italic;text-align:center;">그 외 다수</div></div>
       </div>
     </div>
   </div>
@@ -1284,47 +1313,33 @@
         <ul class="contact-info-list">
           <li>
             <div class="ci-icon">🏢</div>
-            <div>
-              <div class="ci-label">ADDRESS</div>
-              <div class="ci-value">인천시 남동구 미래로 6, 1909호</div>
-            </div>
+            <div><div class="ci-label">ADDRESS</div><div class="ci-value">인천시 남동구 미래로 6, 1909호</div></div>
           </li>
           <li>
             <div class="ci-icon">📞</div>
-            <div>
-              <div class="ci-label">TEL</div>
-              <div class="ci-value">010-2676-5318</div>
-            </div>
+            <div><div class="ci-label">TEL</div><div class="ci-value">010-2676-5318</div></div>
           </li>
           <li>
             <div class="ci-icon">🖨️</div>
-            <div>
-              <div class="ci-label">FAX</div>
-              <div class="ci-value">032-213-9600</div>
-            </div>
+            <div><div class="ci-label">FAX</div><div class="ci-value">032-213-9600</div></div>
           </li>
           <li>
             <div class="ci-icon">✉️</div>
-            <div>
-              <div class="ci-label">E-MAIL</div>
-              <div class="ci-value">daom426@naver.com</div>
-            </div>
+            <div><div class="ci-label">E-MAIL</div><div class="ci-value">daom426@naver.com</div></div>
           </li>
           <li>
             <div class="ci-icon">👤</div>
-            <div>
-              <div class="ci-label">대표이사</div>
-              <div class="ci-value">권 형 명</div>
-            </div>
+            <div><div class="ci-label">대표이사</div><div class="ci-value">권 형 명</div></div>
           </li>
         </ul>
       </div>
-      <div>
-        <div class="contact-map-placeholder">
-          <div class="map-icon">📍</div>
-          <div>인천시 남동구 미래로 6, 1909호</div>
-          <div style="font-size:0.78rem;margin-top:0.25rem;">㈜다옴디앤씨 본사</div>
-        </div>
+      <div class="contact-brand">
+        <img src="assets/logo-horizontal.png" alt="다옴디앤씨" />
+        <p class="contact-brand-tagline">신뢰와 성실로 함께하는<br>정비사업 전문기업</p>
+        <p class="contact-brand-desc">
+          수주컨설팅 · 조합총회업무대행<br>
+          세입자조사 · 이주관리 및 촉진
+        </p>
       </div>
     </div>
   </div>
@@ -1362,30 +1377,11 @@
     });
   });
 
-  // Scroll-activated nav
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    nav.style.background = window.scrollY > 60
-      ? 'rgba(15, 36, 85, 0.98)'
-      : 'rgba(15, 36, 85, 0.97)';
-  });
-
-  // Simple fade-in on scroll
+  // Fade-in on scroll
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.overview-item, .partner-card, .stat-card, .award-item, .service-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
-  });
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
