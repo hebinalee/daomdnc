@@ -114,7 +114,7 @@
     }
     .hero-subtitle {
       font-size: clamp(0.95rem, 2vw, 1.1rem);
-      color: rgba(255,255,255,0.62);
+      color: var(--muted);
       margin-bottom: 2.8rem;
       letter-spacing: 0.01em;
       line-height: 1.9;
@@ -159,7 +159,8 @@
       flex-direction: column;
       align-items: center;
       gap: 8px;
-      color: rgba(255,255,255,0.3);
+      color: var(--muted);
+      opacity: 0.6;
       font-size: 0.68rem;
       letter-spacing: 0.16em;
     }
@@ -325,7 +326,15 @@
     }
 
     /* ─── Business Areas ─── */
-    #business { background: var(--green-pale); }
+    #business { background: var(--green); }
+    #business .section-label { color: rgba(255,255,255,0.5); }
+    #business .section-title { color: #fff; }
+    #business .section-divider { background: rgba(255,255,255,0.3); }
+    #business .section-lead { color: rgba(255,255,255,0.65); }
+    #business .business-tabs { border-color: rgba(255,255,255,0.15); }
+    #business .tab-btn { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.65); }
+    #business .tab-btn.active { background: rgba(255,255,255,0.18); color: #fff; border-color: rgba(255,255,255,0.18); font-weight: 700; }
+    #business .tab-btn:not(.active):hover { background: rgba(255,255,255,0.13); color: rgba(255,255,255,0.9); }
     .business-tabs {
       display: flex;
       gap: 0;
@@ -501,10 +510,10 @@
     }
 
     /* ─── Partnership ─── */
-    #partnership { background: var(--green); }
-    #partnership .section-label { color: rgba(255,255,255,0.5); }
-    #partnership .section-title { color: #fff; }
-    #partnership .section-divider { background: rgba(255,255,255,0.3); }
+    #partnership { background: #fff; }
+    #partnership .section-label { color: var(--green); }
+    #partnership .section-title { color: var(--green-dark); }
+    #partnership .section-divider { background: var(--green); }
     .partnership-lead {
       color: rgba(255,255,255,0.62);
       font-size: 0.97rem;
@@ -516,20 +525,20 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 1px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: var(--border);
+      border: 1px solid var(--border);
       border-radius: 4px;
       overflow: hidden;
     }
     .partner-card {
-      background: rgba(1,61,53,0.5);
+      background: #fff;
       padding: 2rem 1.8rem;
       display: flex;
       align-items: flex-start;
       gap: 1rem;
       transition: background 0.2s;
     }
-    .partner-card:hover { background: rgba(1,61,53,0.8); }
+    .partner-card:hover { background: var(--green-light); }
     .partner-num {
       font-size: 0.68rem;
       font-weight: 700;
@@ -538,11 +547,11 @@
       padding-top: 3px;
       flex-shrink: 0;
     }
-    .partner-name { font-size: 0.9rem; font-weight: 700; color: rgba(255,255,255,0.88); line-height: 1.5; }
-    .partner-desc { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-top: 0.2rem; }
+    .partner-name { font-size: 0.9rem; font-weight: 700; color: var(--green-dark); line-height: 1.5; }
+    .partner-desc { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
 
     /* ─── Track Record ─── */
-    #record { background: #fff; }
+    #record { background: var(--green-pale); }
     .record-intro {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
