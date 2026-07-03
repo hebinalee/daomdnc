@@ -1,0 +1,43 @@
+/**
+ * DAOM D&C — Design Tokens
+ * 브랜드 컬러 팔레트 및 시맨틱 토큰
+ *
+ * 사용법: index.html <head>에 아래 태그 추가
+ *   <link rel="stylesheet" href="assets/tokens.css">
+ */
+
+:root {
+  /* ── Brand Colors ─────────────────────────────────────────
+     브랜드 원색: 신뢰와 성실을 상징하는 딥 그린 (#01544A)
+  ── */
+  --color-brand:        #01544A;   /* Primary — 네비게이션, 버튼, 강조 */
+  --color-brand-dark:   #013d35;   /* Darker  — 섹션 배경, 헤딩 */
+  --color-brand-mid:    #026b5d;   /* Mid     — 호버, 인라인 강조 */
+  --color-brand-light:  #e8f2f1;   /* Light   — 아이콘 배경, 뱃지 */
+  --color-brand-pale:   #f2f8f7;   /* Pale    — 섹션 배경 (연한 틴트) */
+
+  /* ── Neutral Colors ───────────────────────────────────────
+     크림과 경계선: 따뜻한 오프화이트 계열
+  ── */
+  --color-cream:        #faf8f5;   /* Warm off-white — 섹션 배경 */
+  --color-border:       #d4e3e1;   /* Border — 카드, 구분선 */
+
+  /* ── Text Colors ──────────────────────────────────────────
+     본문 텍스트 계열
+  ── */
+  --color-text:         #1a1a1a;   /* Body text */
+  --color-muted:        #5e7270;   /* Secondary text, labels */
+
+  /* ── Semantic Aliases ─────────────────────────────────────
+     컴포넌트에서 실제로 참조하는 토큰 (기존 변수명 호환)
+  ── */
+  --green:        var(--color-brand);
+  --green-dark:   var(--color-brand-dark);
+  --green-mid:    var(--color-brand-mid);
+  --green-light:  var(--color-brand-light);
+  --green-pale:   var(--color-brand-pale);
+  --cream:        var(--color-cream);
+  --border:       var(--color-border);
+  --text:         var(--color-text);
+  --muted:        var(--color-muted);
+}
