@@ -2,8 +2,14 @@
   "permissions": {
     "allow": [
       "Bash(pip install:*)",
-      "Bash(python3 -c ':*)",
-      "Bash(git remote:*)"
+      "Bash(python3*)",
+      "Bash(git remote:*)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(git push:*)",
+      "Bash(git reset:*)",
+      "Bash(cp /mnt/d/code/daom/index.html /tmp/index_current.html)",
     ]
   }
 }
