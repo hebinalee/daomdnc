@@ -4,12 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>㈜다옴디앤씨 | DAOM D&C Co.Ltd.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     /* ─── Reset & Base ─── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+      font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      font-weight: 400;
       color: #1a1a1a;
       background: #fff;
       line-height: 1.7;
@@ -17,12 +21,12 @@
 
     /* ─── Variables ─── */
     :root {
-      --green:       #01544A;   /* brand primary */
-      --green-dark:  #013d35;   /* darker shade */
-      --green-mid:   #026b5d;   /* mid tone */
-      --green-light: #e8f2f1;   /* tint background */
-      --green-pale:  #f2f8f7;   /* very light tint */
-      --cream:       #faf8f5;   /* warm off-white */
+      --green:       #01544A;
+      --green-dark:  #013d35;
+      --green-mid:   #026b5d;
+      --green-light: #e8f2f1;
+      --green-pale:  #f2f8f7;
+      --cream:       #faf8f5;
       --text:        #1a1a1a;
       --muted:       #5e7270;
       --border:      #d4e3e1;
@@ -33,13 +37,13 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 1000;
-      background: rgba(1, 84, 74, 0.97);
+      background: rgba(1, 61, 53, 0.98);
       backdrop-filter: blur(10px);
-      height: 68px;
+      height: 64px;
       display: flex;
       align-items: center;
       padding: 0 5%;
-      box-shadow: 0 2px 24px rgba(1,84,74,0.25);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
     .nav-inner {
       width: 100%;
@@ -50,31 +54,32 @@
       justify-content: space-between;
     }
     .nav-logo img {
-      height: 28px;
+      height: 26px;
       filter: brightness(0) invert(1);
+      opacity: 0.92;
     }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
     .nav-links a {
-      color: rgba(255,255,255,0.8);
+      color: rgba(255,255,255,0.7);
       text-decoration: none;
-      font-size: 0.88rem;
-      letter-spacing: 0.02em;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
       transition: color 0.2s;
     }
     .nav-links a:hover { color: #fff; }
     .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .nav-toggle span { width: 24px; height: 2px; background: #fff; border-radius: 2px; }
+    .nav-toggle span { width: 22px; height: 1.5px; background: rgba(255,255,255,0.8); border-radius: 2px; }
 
     /* ─── Hero ─── */
     #hero {
       min-height: 100vh;
-      background:
-        linear-gradient(160deg, #013d35 0%, #01544A 45%, #026b5d 100%);
+      background: linear-gradient(160deg, #012e28 0%, #01544A 55%, #01665a 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 110px 5% 80px;
+      padding: 120px 5% 100px;
       position: relative;
       overflow: hidden;
     }
@@ -83,105 +88,87 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 55% 55% at 15% 85%, rgba(255,255,255,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 45% 45% at 85% 15%, rgba(255,255,255,0.05) 0%, transparent 60%);
-    }
-    /* decorative circles */
-    #hero::after {
-      content: '';
-      position: absolute;
-      width: 600px; height: 600px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.07);
-      bottom: -200px; right: -150px;
+        radial-gradient(ellipse 60% 50% at 10% 90%, rgba(255,255,255,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 90% 10%, rgba(255,255,255,0.03) 0%, transparent 60%);
       pointer-events: none;
     }
-    .hero-deco {
-      position: absolute;
-      width: 400px; height: 400px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.06);
-      top: -100px; left: -80px;
-      pointer-events: none;
-    }
-    .hero-content { position: relative; z-index: 1; max-width: 820px; }
-    .hero-logo {
-      margin-bottom: 2.5rem;
-    }
+    .hero-content { position: relative; z-index: 1; max-width: 780px; }
+    .hero-logo { margin-bottom: 2.8rem; }
     .hero-logo img {
-      height: 72px;
+      height: 64px;
       filter: brightness(0) invert(1);
+      opacity: 0.95;
     }
     .hero-divider {
-      width: 1px; height: 60px;
-      background: rgba(255,255,255,0.25);
-      margin: 0 auto 2rem;
+      width: 1px; height: 52px;
+      background: rgba(255,255,255,0.2);
+      margin: 0 auto 2.4rem;
     }
     .hero-title {
-      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
-      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
       color: #fff;
-      line-height: 1.22;
-      letter-spacing: -0.01em;
-      margin-bottom: 1.2rem;
+      line-height: 1.28;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.1rem;
     }
     .hero-subtitle {
-      font-size: clamp(1rem, 2.2vw, 1.2rem);
-      color: rgba(255,255,255,0.72);
-      margin-bottom: 2.5rem;
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: rgba(255,255,255,0.62);
+      margin-bottom: 2.8rem;
       letter-spacing: 0.01em;
+      line-height: 1.9;
     }
     .hero-services {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.65rem;
+      gap: 0.55rem;
       margin-bottom: 3rem;
     }
     .hero-tag {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.22);
-      color: rgba(255,255,255,0.9);
-      padding: 7px 20px;
-      border-radius: 30px;
-      font-size: 0.84rem;
-      letter-spacing: 0.02em;
-      transition: background 0.2s;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.28);
+      color: rgba(255,255,255,0.78);
+      padding: 6px 18px;
+      border-radius: 2px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
     }
-    .hero-tag:hover { background: rgba(255,255,255,0.18); }
     .hero-cta { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
     .btn {
-      padding: 14px 32px;
-      border-radius: 6px;
-      font-size: 0.93rem;
-      font-weight: 600;
+      padding: 13px 30px;
+      border-radius: 3px;
+      font-size: 0.88rem;
+      font-weight: 700;
       text-decoration: none;
-      transition: all 0.25s;
+      transition: all 0.22s;
       display: inline-block;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.04em;
     }
     .btn-white { background: #fff; color: var(--green); }
-    .btn-white:hover { background: #f0f0f0; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
-    .btn-outline { border: 2px solid rgba(255,255,255,0.45); color: #fff; }
-    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+    .btn-white:hover { background: #f4f4f4; box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+    .btn-outline { border: 1.5px solid rgba(255,255,255,0.4); color: rgba(255,255,255,0.88); }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.8); color: #fff; }
     .hero-scroll {
       position: absolute;
-      bottom: 28px; left: 50%;
+      bottom: 32px; left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
-      color: rgba(255,255,255,0.35);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
+      gap: 8px;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
     }
     .scroll-arrow {
-      width: 18px; height: 18px;
-      border-right: 2px solid rgba(255,255,255,0.35);
-      border-bottom: 2px solid rgba(255,255,255,0.35);
+      width: 16px; height: 16px;
+      border-right: 1.5px solid rgba(255,255,255,0.3);
+      border-bottom: 1.5px solid rgba(255,255,255,0.3);
       transform: rotate(45deg);
-      animation: bounce 1.6s infinite;
+      animation: bounce 1.8s infinite;
     }
     @keyframes bounce {
       0%,100%{ transform: rotate(45deg) translateY(0) }
@@ -189,128 +176,140 @@
     }
 
     /* ─── Sections ─── */
-    section { padding: 96px 5%; }
+    section { padding: 100px 5%; }
     .section-inner { max-width: 1200px; margin: 0 auto; }
     .section-label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
       color: var(--green);
-      letter-spacing: 0.16em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      margin-bottom: 0.55rem;
+      margin-bottom: 0.5rem;
     }
     .section-title {
-      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
-      font-weight: 800;
+      font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+      font-weight: 700;
       color: var(--green-dark);
-      margin-bottom: 0.55rem;
-      line-height: 1.25;
+      margin-bottom: 0.5rem;
+      line-height: 1.28;
+      letter-spacing: -0.01em;
     }
     .section-divider {
-      width: 40px; height: 3px;
+      width: 32px; height: 2px;
       background: var(--green);
-      border-radius: 2px;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.6rem;
     }
     .section-lead {
-      font-size: 1.03rem;
+      font-size: 1rem;
       color: var(--muted);
-      max-width: 640px;
-      line-height: 1.78;
+      max-width: 600px;
+      line-height: 1.85;
     }
 
     /* ─── CEO Message ─── */
     #ceo { background: var(--cream); }
     .ceo-grid {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 260px 1fr;
       gap: 4rem;
       align-items: start;
       margin-top: 3rem;
     }
     .ceo-card {
       background: var(--green);
-      border-radius: 16px;
+      border-radius: 4px;
       padding: 2.5rem 2rem;
       text-align: center;
       color: #fff;
     }
     .ceo-avatar {
-      width: 80px; height: 80px;
+      width: 72px; height: 72px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.25);
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 1.2rem;
-      font-size: 2rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: rgba(255,255,255,0.9);
     }
-    .ceo-name { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.25rem; }
-    .ceo-title { font-size: 0.82rem; color: rgba(255,255,255,0.7); letter-spacing: 0.05em; }
+    .ceo-name { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.25rem; letter-spacing: 0.05em; }
+    .ceo-title { font-size: 0.78rem; color: rgba(255,255,255,0.6); letter-spacing: 0.06em; }
     .ceo-company {
-      margin-top: 1.2rem;
-      padding-top: 1.2rem;
-      border-top: 1px solid rgba(255,255,255,0.2);
+      margin-top: 1.4rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid rgba(255,255,255,0.15);
     }
     .ceo-company img {
-      height: 22px;
+      height: 20px;
       filter: brightness(0) invert(1);
-      opacity: 0.85;
+      opacity: 0.75;
     }
     .ceo-message blockquote {
-      font-size: 1.04rem;
+      font-size: 1rem;
       color: #2c3e3d;
-      line-height: 1.9;
+      line-height: 1.95;
       padding-left: 1.4rem;
-      border-left: 3px solid var(--green);
+      border-left: 2px solid var(--green);
       margin-bottom: 1.8rem;
     }
     .ceo-message p {
       color: #4a5c5a;
-      line-height: 1.9;
+      line-height: 1.95;
       margin-bottom: 1rem;
+      font-size: 0.97rem;
     }
-    .ceo-message p strong { color: var(--green-dark); }
+    .ceo-message p strong { color: var(--green-dark); font-weight: 700; }
 
     /* ─── Company Overview ─── */
     #overview { background: #fff; }
     .overview-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
+      gap: 1px;
       margin-top: 3rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
     }
     .overview-item {
       display: flex;
       gap: 1rem;
-      padding: 1.4rem 1.6rem;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      transition: box-shadow 0.2s, border-color 0.2s;
+      padding: 1.4rem 1.8rem;
+      background: #fff;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.18s;
     }
-    .overview-item:hover {
-      box-shadow: 0 6px 24px rgba(1,84,74,0.1);
-      border-color: rgba(1,84,74,0.3);
-    }
+    .overview-item:nth-child(even) { border-right: none; }
+    .overview-item:nth-last-child(-n+2) { border-bottom: none; }
+    .overview-item:last-child { border-right: none; }
+    .overview-item:hover { background: var(--green-pale); }
     .overview-icon {
       flex-shrink: 0;
-      width: 42px; height: 42px;
+      width: 36px; height: 36px;
       background: var(--green-light);
-      border-radius: 10px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      color: var(--green);
+      margin-top: 2px;
     }
+    .overview-icon svg { width: 18px; height: 18px; }
     .overview-label {
-      font-size: 0.76rem;
+      font-size: 0.72rem;
       color: var(--muted);
-      letter-spacing: 0.04em;
-      margin-bottom: 0.2rem;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
     }
     .overview-value {
-      font-size: 0.95rem;
-      font-weight: 600;
+      font-size: 0.93rem;
+      font-weight: 700;
       color: var(--green-dark);
       line-height: 1.55;
     }
@@ -319,9 +318,10 @@
       background: var(--green-pale);
       border: 1px solid var(--border);
       color: var(--green);
-      padding: 3px 12px;
-      border-radius: 20px;
-      font-size: 0.82rem;
+      padding: 3px 11px;
+      border-radius: 2px;
+      font-size: 0.78rem;
+      font-weight: 500;
       margin: 2px;
     }
 
@@ -329,82 +329,79 @@
     #business { background: var(--green-pale); }
     .business-tabs {
       display: flex;
-      gap: 0.5rem;
+      gap: 0;
       margin: 2rem 0;
       flex-wrap: wrap;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      display: inline-flex;
     }
     .tab-btn {
       padding: 10px 22px;
-      border: 2px solid var(--border);
-      border-radius: 6px;
+      border: none;
+      border-right: 1px solid var(--border);
       background: #fff;
       color: var(--muted);
-      font-size: 0.87rem;
-      font-weight: 600;
+      font-size: 0.84rem;
+      font-weight: 500;
+      font-family: inherit;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.18s;
+      letter-spacing: 0.01em;
     }
-    .tab-btn.active, .tab-btn:hover {
-      background: var(--green);
-      border-color: var(--green);
-      color: #fff;
-    }
+    .tab-btn:last-child { border-right: none; }
+    .tab-btn.active { background: var(--green); color: #fff; font-weight: 700; }
+    .tab-btn:not(.active):hover { background: var(--green-pale); color: var(--green-dark); }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
     .service-card {
       background: #fff;
-      border-radius: 16px;
+      border-radius: 4px;
       padding: 2.5rem;
       border: 1px solid var(--border);
     }
     .service-card-header {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 1.2rem;
       margin-bottom: 2rem;
       padding-bottom: 1.5rem;
       border-bottom: 1px solid var(--border);
     }
     .service-card-icon {
-      width: 54px; height: 54px;
+      width: 48px; height: 48px;
       background: var(--green);
-      border-radius: 14px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
       flex-shrink: 0;
+      color: #fff;
     }
-    .service-card-title { font-size: 1.3rem; font-weight: 800; color: var(--green-dark); }
-    .service-card-sub { font-size: 0.87rem; color: var(--muted); margin-top: 0.15rem; }
+    .service-card-icon svg { width: 24px; height: 24px; }
+    .service-card-title { font-size: 1.2rem; font-weight: 700; color: var(--green-dark); letter-spacing: -0.01em; }
+    .service-card-sub { font-size: 0.84rem; color: var(--muted); margin-top: 0.2rem; }
     .service-groups {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
-      gap: 1.5rem;
+      gap: 1.8rem;
     }
     .service-group h4 {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      color: var(--green);
-      margin-bottom: 0.7rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .service-group h4::before {
-      content: '';
-      width: 7px; height: 7px;
-      background: var(--green);
-      border-radius: 50%;
-      flex-shrink: 0;
+      color: var(--green-dark);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
     }
     .service-group ul { list-style: none; }
     .service-group li {
-      font-size: 0.86rem;
+      font-size: 0.85rem;
       color: #444;
-      padding: 4px 0 4px 14px;
+      padding: 4px 0 4px 12px;
       position: relative;
-      line-height: 1.5;
+      line-height: 1.55;
     }
     .service-group li::before { content: '–'; position: absolute; left: 0; color: var(--green-mid); }
 
@@ -415,24 +412,25 @@
       display: inline-block;
       background: var(--green);
       color: #fff;
-      padding: 14px 44px;
-      border-radius: 10px;
+      padding: 13px 42px;
+      border-radius: 4px;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
       position: relative;
     }
     .org-ceo::after {
       content: '';
       position: absolute;
-      bottom: -30px; left: 50%;
+      bottom: -28px; left: 50%;
       transform: translateX(-50%);
-      width: 2px; height: 30px;
+      width: 1.5px; height: 28px;
       background: var(--border);
     }
     .org-line {
       display: flex;
       justify-content: center;
-      margin-top: 30px;
+      margin-top: 28px;
       position: relative;
     }
     .org-line::before {
@@ -440,7 +438,7 @@
       position: absolute;
       top: 0; left: 50%;
       transform: translateX(-50%);
-      width: 68%; height: 2px;
+      width: 62%; height: 1.5px;
       background: var(--border);
     }
     .org-departments {
@@ -456,143 +454,164 @@
     }
     .org-dept-wrap::before {
       content: '';
-      width: 2px; height: 30px;
+      width: 1.5px; height: 28px;
       background: var(--border);
     }
     .org-dept {
       background: var(--green-pale);
-      border: 2px solid var(--border);
-      border-radius: 12px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
       padding: 1.1rem 1.4rem;
-      min-width: 162px;
+      min-width: 156px;
       text-align: center;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
     .org-dept:hover {
       border-color: var(--green);
-      box-shadow: 0 4px 16px rgba(1,84,74,0.12);
+      box-shadow: 0 3px 12px rgba(1,84,74,0.1);
     }
     .org-dept-name {
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--green-dark);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.55rem;
+      letter-spacing: 0.02em;
     }
     .org-dept-tasks {
       list-style: none;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: var(--muted);
-      line-height: 1.65;
+      line-height: 1.7;
     }
     .org-advisors {
       display: flex;
       justify-content: center;
-      gap: 1.2rem;
+      gap: 1rem;
       margin-top: 2.5rem;
       flex-wrap: wrap;
     }
     .org-advisor {
-      background: var(--green-light);
+      background: #fff;
       color: var(--green-dark);
       border: 1px solid var(--border);
-      padding: 8px 28px;
-      border-radius: 8px;
-      font-size: 0.87rem;
-      font-weight: 600;
+      padding: 7px 26px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
     }
 
     /* ─── Partnership ─── */
     #partnership { background: var(--green); }
-    #partnership .section-label { color: rgba(255,255,255,0.6); }
+    #partnership .section-label { color: rgba(255,255,255,0.5); }
     #partnership .section-title { color: #fff; }
-    #partnership .section-divider { background: rgba(255,255,255,0.4); }
+    #partnership .section-divider { background: rgba(255,255,255,0.3); }
     .partnership-lead {
-      color: rgba(255,255,255,0.68);
-      font-size: 1rem;
-      max-width: 600px;
-      line-height: 1.8;
+      color: rgba(255,255,255,0.62);
+      font-size: 0.97rem;
+      max-width: 560px;
+      line-height: 1.9;
       margin-bottom: 3rem;
     }
     .partners-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1.25rem;
+      gap: 1px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      overflow: hidden;
     }
     .partner-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 14px;
-      padding: 2rem 1.5rem;
-      text-align: center;
-      transition: background 0.2s, transform 0.2s;
+      background: rgba(1,61,53,0.5);
+      padding: 2rem 1.8rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: background 0.2s;
     }
-    .partner-card:hover { background: rgba(255,255,255,0.14); transform: translateY(-3px); }
-    .partner-icon { font-size: 2.2rem; margin-bottom: 0.9rem; }
-    .partner-name { font-size: 0.93rem; font-weight: 700; color: #fff; line-height: 1.4; }
+    .partner-card:hover { background: rgba(1,61,53,0.8); }
+    .partner-num {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.1em;
+      padding-top: 3px;
+      flex-shrink: 0;
+    }
+    .partner-name { font-size: 0.9rem; font-weight: 700; color: rgba(255,255,255,0.88); line-height: 1.5; }
+    .partner-desc { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-top: 0.2rem; }
 
     /* ─── Track Record ─── */
     #record { background: var(--cream); }
     .record-intro {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
+      gap: 1px;
       margin: 3rem 0;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
     }
     .stat-card {
       background: #fff;
-      border-radius: 14px;
-      padding: 1.8rem 1.5rem;
+      padding: 2rem 1.5rem;
       text-align: center;
-      border: 1px solid var(--border);
-      transition: box-shadow 0.2s;
     }
-    .stat-card:hover { box-shadow: 0 6px 24px rgba(1,84,74,0.1); }
     .stat-num {
-      font-size: 2.8rem;
-      font-weight: 900;
+      font-size: 2.6rem;
+      font-weight: 700;
       color: var(--green);
       line-height: 1;
+      letter-spacing: -0.02em;
     }
-    .stat-num span { font-size: 1.6rem; }
-    .stat-label { font-size: 0.87rem; color: var(--muted); margin-top: 0.4rem; }
+    .stat-num span { font-size: 1.4rem; }
+    .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.5rem; font-weight: 500; }
     .record-tabs {
       display: flex;
-      gap: 0.5rem;
+      gap: 0;
       margin-bottom: 1.5rem;
-      flex-wrap: wrap;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      display: inline-flex;
     }
     .rec-tab {
-      padding: 8px 20px;
-      border-radius: 6px;
+      padding: 9px 20px;
+      border: none;
+      border-right: 1px solid var(--border);
       background: #fff;
-      border: 1px solid var(--border);
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.83rem;
+      font-weight: 500;
+      font-family: inherit;
       cursor: pointer;
       color: var(--muted);
-      transition: all 0.2s;
+      transition: all 0.18s;
     }
-    .rec-tab.active, .rec-tab:hover { background: var(--green); color: #fff; border-color: var(--green); }
+    .rec-tab:last-child { border-right: none; }
+    .rec-tab.active { background: var(--green); color: #fff; font-weight: 700; }
+    .rec-tab:not(.active):hover { background: var(--green-pale); color: var(--green-dark); }
     .rec-panel { display: none; }
     .rec-panel.active { display: block; }
     .record-table-wrap {
       background: #fff;
-      border-radius: 14px;
+      border-radius: 4px;
       overflow: hidden;
       border: 1px solid var(--border);
     }
-    .record-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
+    .record-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
     .record-table th {
-      background: var(--green);
-      color: #fff;
-      padding: 12px 16px;
+      background: var(--green-dark);
+      color: rgba(255,255,255,0.85);
+      padding: 11px 16px;
       text-align: left;
-      font-weight: 600;
-      font-size: 0.82rem;
-      letter-spacing: 0.03em;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
     }
     .record-table td {
-      padding: 11px 16px;
+      padding: 10px 16px;
       border-bottom: 1px solid var(--border);
       color: #333;
       vertical-align: top;
@@ -603,49 +622,48 @@
       display: inline-block;
       background: var(--green-light);
       color: var(--green-dark);
-      padding: 2px 9px;
-      border-radius: 4px;
-      font-size: 0.77rem;
+      padding: 2px 8px;
+      border-radius: 2px;
+      font-size: 0.75rem;
       font-weight: 700;
       white-space: nowrap;
     }
     .award-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 0.75rem;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
     }
     .award-item {
       background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 0.85rem 1.1rem;
+      padding: 0.9rem 1.2rem;
       display: flex;
       align-items: flex-start;
-      gap: 0.75rem;
-      transition: box-shadow 0.2s, border-color 0.2s;
+      gap: 0.7rem;
+      transition: background 0.15s;
     }
-    .award-item:hover {
-      box-shadow: 0 4px 16px rgba(1,84,74,0.1);
-      border-color: rgba(1,84,74,0.3);
-    }
+    .award-item:hover { background: var(--green-pale); }
     .award-bullet {
       flex-shrink: 0;
-      width: 7px; height: 7px;
+      width: 5px; height: 5px;
       background: var(--green);
       border-radius: 50%;
-      margin-top: 6px;
+      margin-top: 8px;
     }
-    .award-text { font-size: 0.85rem; color: #333; line-height: 1.55; }
+    .award-text { font-size: 0.84rem; color: #333; line-height: 1.55; }
 
     /* ─── Contact / Footer ─── */
     #contact { background: var(--green-dark); padding-bottom: 0; }
-    #contact .section-label { color: rgba(255,255,255,0.55); }
+    #contact .section-label { color: rgba(255,255,255,0.45); }
     #contact .section-title { color: #fff; }
-    #contact .section-divider { background: rgba(255,255,255,0.35); }
+    #contact .section-divider { background: rgba(255,255,255,0.25); }
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      gap: 4rem;
       margin-top: 3rem;
     }
     .contact-info-list { list-style: none; }
@@ -654,56 +672,69 @@
       gap: 1rem;
       align-items: flex-start;
       padding: 1rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.8);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.75);
     }
     .contact-info-list li:last-child { border-bottom: none; }
-    .ci-icon { font-size: 1.15rem; flex-shrink: 0; margin-top: 2px; }
+    .ci-icon {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.55);
+      margin-top: 1px;
+    }
+    .ci-icon svg { width: 16px; height: 16px; }
     .ci-label {
-      font-size: 0.76rem;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 0.08em;
-      font-weight: 600;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em;
+      font-weight: 700;
       margin-bottom: 0.2rem;
     }
-    .ci-value { font-size: 0.95rem; }
+    .ci-value { font-size: 0.93rem; }
     .contact-brand {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 1.6rem;
     }
     .contact-brand img {
-      height: 52px;
+      height: 46px;
       filter: brightness(0) invert(1);
-      opacity: 0.9;
+      opacity: 0.85;
     }
     .contact-brand-desc {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.8;
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.9;
     }
     .contact-brand-tagline {
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.8);
-      font-weight: 600;
-      line-height: 1.6;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      font-weight: 700;
+      line-height: 1.65;
+      letter-spacing: -0.01em;
     }
     footer {
-      background: rgba(0,0,0,0.3);
+      background: rgba(0,0,0,0.25);
       padding: 1.4rem 5%;
       margin-top: 4rem;
       text-align: center;
-      color: rgba(255,255,255,0.3);
-      font-size: 0.78rem;
+      color: rgba(255,255,255,0.25);
+      font-size: 0.76rem;
+      letter-spacing: 0.02em;
     }
 
     /* ─── Fade-in ─── */
     .fade-in {
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
+      transform: translateY(14px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
     .fade-in.visible { opacity: 1; transform: none; }
 
@@ -711,22 +742,27 @@
     @media (max-width: 900px) {
       .ceo-grid { grid-template-columns: 1fr; gap: 2rem; }
       .overview-grid { grid-template-columns: 1fr; }
+      .overview-item { border-right: none; }
+      .overview-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+      .overview-item:last-child { border-bottom: none; }
       .record-intro { grid-template-columns: 1fr 1fr; }
       .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
     }
     @media (max-width: 640px) {
-      section { padding: 64px 5%; }
+      section { padding: 72px 5%; }
+      .business-tabs, .record-tabs { display: flex; flex-wrap: wrap; border-radius: 4px; }
+      .tab-btn, .rec-tab { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
       .record-intro { grid-template-columns: 1fr; }
       .org-line::before { width: 88%; }
       .nav-links {
         display: none;
         flex-direction: column;
         position: fixed;
-        top: 68px; left: 0; right: 0;
+        top: 64px; left: 0; right: 0;
         background: var(--green-dark);
         padding: 1.5rem 5%;
-        gap: 1rem;
-        border-top: 1px solid rgba(255,255,255,0.1);
+        gap: 1.1rem;
+        border-top: 1px solid rgba(255,255,255,0.08);
       }
       .nav-links.open { display: flex; }
       .nav-toggle { display: flex; }
@@ -756,7 +792,6 @@
 
 <!-- Hero -->
 <section id="hero">
-  <div class="hero-deco"></div>
   <div class="hero-content">
     <div class="hero-logo">
       <img src="assets/logo-horizontal.png" alt="DAOM Development & Construction" />
@@ -787,9 +822,9 @@
     <div class="ceo-grid">
       <div>
         <div class="ceo-card">
-          <div class="ceo-avatar">👤</div>
+          <div class="ceo-avatar">권</div>
           <div class="ceo-name">권 형 명</div>
-          <div class="ceo-title">대표이사 / CEO</div>
+          <div class="ceo-title">대표이사 &nbsp;/&nbsp; CEO</div>
           <div class="ceo-company">
             <img src="assets/logo-horizontal.png" alt="다옴디앤씨" />
           </div>
@@ -820,52 +855,66 @@
     <div class="section-divider"></div>
     <div class="overview-grid">
       <div class="overview-item fade-in">
-        <div class="overview-icon">🏢</div>
+        <div class="overview-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/></svg>
+        </div>
         <div>
           <div class="overview-label">상호</div>
-          <div class="overview-value">㈜다옴디앤씨<br><small style="font-weight:400;font-size:0.8rem;color:var(--muted)">DAOM D&amp;C Co.Ltd.</small></div>
+          <div class="overview-value">㈜다옴디앤씨<br><small style="font-weight:400;font-size:0.78rem;color:var(--muted)">DAOM D&amp;C Co.Ltd.</small></div>
         </div>
       </div>
       <div class="overview-item fade-in">
-        <div class="overview-icon">👤</div>
+        <div class="overview-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+        </div>
         <div>
           <div class="overview-label">대표이사</div>
           <div class="overview-value">권 형 명</div>
         </div>
       </div>
       <div class="overview-item fade-in">
-        <div class="overview-icon">📍</div>
+        <div class="overview-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+        </div>
         <div>
           <div class="overview-label">소재지</div>
           <div class="overview-value">인천시 남동구 구월로37번길 10, 109동 1701호</div>
         </div>
       </div>
       <div class="overview-item fade-in">
-        <div class="overview-icon">📋</div>
+        <div class="overview-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+        </div>
         <div>
           <div class="overview-label">사업자등록번호</div>
           <div class="overview-value">337 – 81 – 02215</div>
         </div>
       </div>
       <div class="overview-item fade-in">
-        <div class="overview-icon">📅</div>
+        <div class="overview-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+        </div>
         <div>
           <div class="overview-label">설립연도</div>
           <div class="overview-value">2021년 04월</div>
         </div>
       </div>
       <div class="overview-item fade-in">
-        <div class="overview-icon">💼</div>
+        <div class="overview-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z"/></svg>
+        </div>
         <div>
           <div class="overview-label">업태 / 종목</div>
           <div class="overview-value">서비스 / 부동산관련컨설팅, 홍보대행</div>
         </div>
       </div>
-      <div class="overview-item fade-in" style="grid-column:1/-1">
-        <div class="overview-icon">📌</div>
+      <div class="overview-item fade-in" style="grid-column:1/-1; border-right:none;">
+        <div class="overview-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z"/></svg>
+        </div>
         <div>
           <div class="overview-label">사업분야</div>
-          <div style="margin-top:0.4rem">
+          <div style="margin-top:0.45rem">
             <span class="biz-tag">부동산컨설팅업</span>
             <span class="biz-tag">분양대행업</span>
             <span class="biz-tag">인력공급업</span>
@@ -889,16 +938,18 @@
     <div class="section-divider"></div>
     <p class="section-lead">㈜다옴디앤씨는 신뢰와 성실을 기반으로 품격 높은 서비스를 제공합니다.</p>
     <div class="business-tabs">
-      <button class="tab-btn active" data-tab="tab1">🎯 수주 컨설팅</button>
-      <button class="tab-btn" data-tab="tab2">📋 총회 대행업무</button>
-      <button class="tab-btn" data-tab="tab3">🚚 이주관리 &amp; 촉진</button>
-      <button class="tab-btn" data-tab="tab4">🔍 세입자 조사</button>
+      <button class="tab-btn active" data-tab="tab1">수주 컨설팅</button>
+      <button class="tab-btn" data-tab="tab2">총회 대행업무</button>
+      <button class="tab-btn" data-tab="tab3">이주관리 &amp; 촉진</button>
+      <button class="tab-btn" data-tab="tab4">세입자 조사</button>
     </div>
 
     <div class="tab-panel active" id="tab1">
       <div class="service-card">
         <div class="service-card-header">
-          <div class="service-card-icon">🎯</div>
+          <div class="service-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"/></svg>
+          </div>
           <div>
             <div class="service-card-title">수주 컨설팅</div>
             <div class="service-card-sub">전략적 수주 기획부터 조직 구축, 홍보물 제작까지 One-Stop 지원</div>
@@ -936,7 +987,9 @@
     <div class="tab-panel" id="tab2">
       <div class="service-card">
         <div class="service-card-header">
-          <div class="service-card-icon">📋</div>
+          <div class="service-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/></svg>
+          </div>
           <div>
             <div class="service-card-title">총회 대행업무</div>
             <div class="service-card-sub">총회 준비부터 개최, 홍보요원 전문화까지 전반적인 총회 업무 대행</div>
@@ -984,7 +1037,9 @@
     <div class="tab-panel" id="tab3">
       <div class="service-card">
         <div class="service-card-header">
-          <div class="service-card-icon">🚚</div>
+          <div class="service-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
+          </div>
           <div>
             <div class="service-card-title">이주관리 및 촉진</div>
             <div class="service-card-sub">이주계획 수립부터 명도소송 지원까지 체계적인 이주관리 서비스</div>
@@ -1022,7 +1077,9 @@
     <div class="tab-panel" id="tab4">
       <div class="service-card">
         <div class="service-card-header">
-          <div class="service-card-icon">🔍</div>
+          <div class="service-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 15.803 7.5 7.5 0 0015.803 15.803z"/></svg>
+          </div>
           <div>
             <div class="service-card-title">세입자 조사</div>
             <div class="service-card-sub">이주대책 수립을 위한 세입자 및 실 거주자 전문 조사 서비스</div>
@@ -1113,20 +1170,32 @@
     <p class="partnership-lead">유관기업들과의 협력사 / 파트너십 구축을 통한<br>신뢰성 있는 과업수행의 경쟁력을 확보합니다.</p>
     <div class="partners-grid">
       <div class="partner-card fade-in">
-        <div class="partner-icon">🏙️</div>
-        <div class="partner-name">도시계획 엔지니어링</div>
+        <div class="partner-num">01</div>
+        <div>
+          <div class="partner-name">도시계획 엔지니어링</div>
+          <div class="partner-desc">도시정비사업 계획 및 설계</div>
+        </div>
       </div>
       <div class="partner-card fade-in">
-        <div class="partner-icon">🏗️</div>
-        <div class="partner-name">철거 · 지장물 이설업체</div>
+        <div class="partner-num">02</div>
+        <div>
+          <div class="partner-name">철거 · 지장물 이설업체</div>
+          <div class="partner-desc">철거 및 지장물 이설 전문</div>
+        </div>
       </div>
       <div class="partner-card fade-in">
-        <div class="partner-icon">🏢</div>
-        <div class="partner-name">정비사업 전문관리업체</div>
+        <div class="partner-num">03</div>
+        <div>
+          <div class="partner-name">정비사업 전문관리업체</div>
+          <div class="partner-desc">정비사업 종합 관리 지원</div>
+        </div>
       </div>
       <div class="partner-card fade-in">
-        <div class="partner-icon">📐</div>
-        <div class="partner-name">건축사사무소</div>
+        <div class="partner-num">04</div>
+        <div>
+          <div class="partner-name">건축사사무소</div>
+          <div class="partner-desc">건축 설계 및 인허가 지원</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1159,7 +1228,7 @@
     </div>
 
     <div class="rec-panel active" id="rec1">
-      <div style="margin-bottom:0.75rem;font-size:0.82rem;color:var(--muted);">* ~2021.03 (구) 레보디앤씨 / 2021.04~ (현) 다옴디앤씨 임원 주요 실적 기준</div>
+      <div style="margin-bottom:0.75rem;font-size:0.8rem;color:var(--muted);">* ~2021.03 (구) 레보디앤씨 / 2021.04~ (현) 다옴디앤씨 임원 주요 실적 기준</div>
       <div class="award-grid">
         <div class="award-item"><div class="award-bullet"></div><div class="award-text">인천 동양아파트 재건축</div></div>
         <div class="award-item"><div class="award-bullet"></div><div class="award-text">인천 안국아파트 재건축</div></div>
@@ -1220,7 +1289,7 @@
     </div>
 
     <div class="rec-panel" id="rec2">
-      <div style="margin-bottom:0.75rem;font-size:0.82rem;color:var(--muted);">* ~2021.03 (구) 레보디앤씨 / 2021.04~ (현) 다옴디앤씨 업무 주요 실적 기준</div>
+      <div style="margin-bottom:0.75rem;font-size:0.8rem;color:var(--muted);">* ~2021.03 (구) 레보디앤씨 / 2021.04~ (현) 다옴디앤씨 업무 주요 실적 기준</div>
       <div class="record-table-wrap">
         <table class="record-table">
           <thead>
@@ -1269,7 +1338,7 @@
     </div>
 
     <div class="rec-panel" id="rec3">
-      <div style="margin-bottom:0.75rem;font-size:0.82rem;color:var(--muted);">* 임원 주요 동의서 징구 실적 (대표 사례)</div>
+      <div style="margin-bottom:0.75rem;font-size:0.8rem;color:var(--muted);">* 임원 주요 동의서 징구 실적 (대표 사례)</div>
       <div class="award-grid">
         <div class="award-item"><div class="award-bullet"></div><div class="award-text">개포주공4단지 동의서</div></div>
         <div class="award-item"><div class="award-bullet"></div><div class="award-text">남서울 한양아파트 동의서</div></div>
@@ -1312,23 +1381,33 @@
       <div>
         <ul class="contact-info-list">
           <li>
-            <div class="ci-icon">🏢</div>
+            <div class="ci-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+            </div>
             <div><div class="ci-label">ADDRESS</div><div class="ci-value">인천시 남동구 구월로37번길 10, 109동 1701호</div></div>
           </li>
           <li>
-            <div class="ci-icon">📞</div>
+            <div class="ci-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+            </div>
             <div><div class="ci-label">TEL</div><div class="ci-value">010-2676-5318</div></div>
           </li>
           <li>
-            <div class="ci-icon">🖨️</div>
+            <div class="ci-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0021 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 00-1.913-.247M6.34 18H5.25A2.25 2.25 0 013 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 011.913-.247m10.5 0a48.536 48.536 0 00-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5zm-3 0h.008v.008H15V10.5z"/></svg>
+            </div>
             <div><div class="ci-label">FAX</div><div class="ci-value">032-213-9600</div></div>
           </li>
           <li>
-            <div class="ci-icon">✉️</div>
+            <div class="ci-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+            </div>
             <div><div class="ci-label">E-MAIL</div><div class="ci-value">daom426@naver.com</div></div>
           </li>
           <li>
-            <div class="ci-icon">👤</div>
+            <div class="ci-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+            </div>
             <div><div class="ci-label">대표이사</div><div class="ci-value">권 형 명</div></div>
           </li>
         </ul>
